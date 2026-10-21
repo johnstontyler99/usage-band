@@ -1,0 +1,7 @@
+{
+  "name": "usage-band",
+  "version": "0.1.0",
+  "description": "Shows 5-hour and weekly usage beside the prompt and warns when the session gets expensive",
+  "types": "./types/index.d.ts",
+  "license": "MIT"
+}
