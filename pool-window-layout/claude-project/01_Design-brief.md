@@ -12,7 +12,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and no
 |---|---|
 | Overall opening (between brick returns) | **11,844** |
 | Plate height | **3,110** FFL to the top of the plate/steel beam, where the raked ceiling starts (confirmed by me) |
-| Floor datum (FFL) | **Top of the new topped slab** (existing 100 slab topped to 200 under the new wall and back to the house; the pool side stays at 100). All heights are from this level (confirmed by me). |
+| Floor datum (FFL) | **Top of the new topped slab** (existing 100 slab topped to 200 under the new wall and back to the house; the pool side stays at 100). All heights are from this level (confirmed by me). The topping stops at the wall line, so there's a **100 step down** into the lobby and pool area (confirmed by me). |
 | Ceiling rake | **9.7°** |
 | Apex (ceiling at centre) | ≈ 4,122 AFL (rise ≈ 1,012 over the 5,922 half-span) |
 
@@ -47,7 +47,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and no
 | Mark | Qty | Size W × H | Description |
 |---|---|---|---|
 | W01–W04 | 4 | 2,311 × 2,910 (clear between post faces) | 2 bays of 1,156 (centre mullion). Lower: fixed glass 1,156 × 1,200 ×2. Upper: glass louvre galleries 1,156 × 1,710 ×2 with **fixed security screens** (stainless mesh, pool side). |
-| D01 | 1 | 2,000 × 2,910 opening | Double glazed pivot doors, leaves ≈ 975 × 2,860, pivots ≈ 180 from the jambs. Leaves ≈ 85 kg each (estimate). Pull handles, keyed lock, flush drained threshold, floor boxes in the slab. |
+| D01 | 1 | 2,000 × 2,910 opening | Double glazed pivot doors, leaves ≈ 975 × 2,860, pivots ≈ 180 from the jambs. Leaves ≈ 85 kg each (estimate). Pull handles, keyed lock, drained threshold at the ≈100 step down to the lobby (not flush), floor boxes in the slab. |
 | GW01 | 2 (L/R) | 3,361 wide, 1,004 → 429 high | Raked fixed glass, from the centre post to G1/G3 |
 | GW02 | 2 (L/R) | 2,411 wide, 412 → 0 high | Raked fixed glass, end triangles. Consider cladding the last 400–600. |
 | G01 | 1 | 900 × 1,200 | Glass pool gate in the lobby front. Self-closing, self-latching, latch ≥ 1,500, opens into the lobby. |
@@ -64,6 +64,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and no
 - Gate 900. In plan, the hinge is 770 from the left lobby corner (as in my sketch: gate right of centre on the far side). It swings into the lobby.
 - There's a bench seat along the wall next to the lobby on the pool side (indicative, from the site plan sketch).
 - Non-climbable zone: nothing climbable within 900 inside the lobby.
+- Levels: the lobby is at pool level, 100 below the alfresco FFL. Lobby fence, gate and latch heights are measured from the lobby level (certifier to confirm).
 
 ## 7. Pool barrier summary
 - The wall is the barrier. The 1,200 fixed glass base is non-climbable and matches the fence height.
@@ -82,7 +83,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and no
 ## 9. Deliverables so far
 - **Drawing pack Rev C** (A3, 6 sheets): DA-00 cover and in-situ view; DA-01 elevation 1:50; DA-02 plan 1:50; DA-03 lobby detail 1:20; DA-04 opening schedule, steel setout and notes; DA-05 window and door schedule.
   - Rev A: concept Draft 2. Rev B: DA-05 added; window width relabelled as clear between post faces.
-  - Rev C: beam spans corrected to 2,411 / 2,411 / 2,100 / 2,411 / 2,411 (DA-00, DA-04; Rev B measured the end spans from the brick); 3,110 plate height shown as confirmed; pivot leaf weight ≈85 kg (estimate) on DA-04; DA-05 note gives 2,100 post centres at the doors; DA-03 note on the lobby 2,200 overall and nominal front panel sizes.
+  - Rev C: beam spans corrected to 2,411 / 2,411 / 2,100 / 2,411 / 2,411 (DA-00, DA-04; Rev B measured the end spans from the brick); 3,110 plate height shown as confirmed; pivot leaf weight ≈85 kg (estimate) on DA-04; DA-05 note gives 2,100 post centres at the doors; DA-03 note on the lobby 2,200 overall and nominal front panel sizes; 100 step down at D01 noted on DA-03 and DA-05 (threshold not flush).
 - **Interactive layout page** (sliders for door width, posts, beam, lobby and so on): https://claude.ai/artifact/PYTKikyaUGRJmK1fuu9y4z
 - Source files: GitHub `johnstontyler99/usage-band`, branch `claude/pool-window-layout-design-dj0tn2`, folder `pool-window-layout/`.
 
