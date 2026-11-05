@@ -12,6 +12,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and no
 |---|---|
 | Overall opening (between brick returns) | **11,844** |
 | Plate height | **3,110** FFL to the top of the plate/steel beam, where the raked ceiling starts (confirmed by me) |
+| Floor datum (FFL) | **Top of the new topped slab** (existing 100 slab topped to 200 under the new wall and back to the house; the pool side stays at 100). All heights are from this level (confirmed by me). |
 | Ceiling rake | **9.7°** |
 | Apex (ceiling at centre) | ≈ 4,122 AFL (rise ≈ 1,012 over the 5,922 half-span) |
 
