@@ -1,6 +1,6 @@
 # Pool alfresco gable infill: design brief and decisions
 
-Status: **Concept, Draft 2**. Drawing pack Rev B, 05.11.2026. Preliminary and not for construction.
+Status: **Concept, Draft 2**. Drawing pack Rev C, 05.11.2026. Preliminary and not for construction.
 
 ## 1. The job
 - An open gable end of the alfresco faces the pool. There's an existing frameless glass pool fence (1,200 high) along the edge of the alfresco slab under the gable.
@@ -22,7 +22,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev B, 05.11.2026. Preliminary and no
 4. **Louvres have fixed security screens**, so they can open fully and still comply with the pool barrier rules.
 5. **Doors: double pivot doors** in the centre, full height to the beam, swinging into the alfresco.
 6. **Two windows either side of the doors**, with a **steel support post between them** and a **support post at each end against the brick**. There are also posts at the door jambs.
-7. **A square pool fence lobby on the pool side behind the doors** (my sketch). The doors open into the fenced lobby, not into the pool area, and a gate leads from the lobby to the pool. The gate opens into the lobby, away from the pool.
+7. **A pool fence lobby on the pool side behind the doors** (my sketch). The doors open into the fenced lobby, not into the pool area, and a gate leads from the lobby to the pool. The gate opens into the lobby, away from the pool.
 8. **A steel beam** across the top of the wall frames at plate height, with **gable posts** above it: one in the centre and one each side, over the posts between the windows. There's an option for two each side.
 
 ## 4. Setout (viewed from the pool side, measured from the left brick)
@@ -58,6 +58,8 @@ Status: **Concept, Draft 2**. Drawing pack Rev B, 05.11.2026. Preliminary and no
 
 ## 6. Pool-side lobby
 - **2,200 wide × 1,500 deep** (assumed from the proportions in my sketch), centred on the doors. The side fences return onto the door-jamb posts P3 and P4.
+- The 2,200 is overall, to the outer faces of P3 and P4 (4,822 to 7,022), so the side panels clamp to the post faces, not the 2,100 post centres.
+- Front panels 770 + 900 + 530 = 2,200 are nominal. The fence supplier deducts the hinge, latch and post gaps.
 - Gate 900. In plan, the hinge is 770 from the left lobby corner (as in my sketch: gate right of centre on the far side). It swings into the lobby.
 - There's a bench seat along the wall next to the lobby on the pool side (indicative, from the site plan sketch).
 - Non-climbable zone: nothing climbable within 900 inside the lobby.
@@ -77,8 +79,9 @@ Status: **Concept, Draft 2**. Drawing pack Rev B, 05.11.2026. Preliminary and no
 - [ ] Gable end triangles: glaze or clad?
 
 ## 9. Deliverables so far
-- **Drawing pack Rev B** (A3, 6 sheets): DA-00 cover and in-situ view; DA-01 elevation 1:50; DA-02 plan 1:50; DA-03 lobby detail 1:20; DA-04 opening schedule, steel setout and notes; DA-05 window and door schedule.
+- **Drawing pack Rev C** (A3, 6 sheets): DA-00 cover and in-situ view; DA-01 elevation 1:50; DA-02 plan 1:50; DA-03 lobby detail 1:20; DA-04 opening schedule, steel setout and notes; DA-05 window and door schedule.
   - Rev A: concept Draft 2. Rev B: DA-05 added; window width relabelled as clear between post faces.
+  - Rev C: beam spans corrected to 2,411 / 2,411 / 2,100 / 2,411 / 2,411 (DA-00, DA-04; Rev B measured the end spans from the brick); 3,110 plate height shown as confirmed; pivot leaf weight ≈85 kg (estimate) on DA-04; DA-05 note gives 2,100 post centres at the doors; DA-03 note on the lobby 2,200 overall and nominal front panel sizes.
 - **Interactive layout page** (sliders for door width, posts, beam, lobby and so on): https://claude.ai/artifact/PYTKikyaUGRJmK1fuu9y4z
 - Source files: GitHub `johnstontyler99/usage-band`, branch `claude/pool-window-layout-design-dj0tn2`, folder `pool-window-layout/`.
 
@@ -89,6 +92,7 @@ Status: **Concept, Draft 2**. Drawing pack Rev B, 05.11.2026. Preliminary and no
 4. Louvres get security screens.
 5. Draft 2: 1,200 solid glass and louvres above; 2 windows each side of the doors with posts between and at the brick ends.
 6. Drawing pack Rev A, then Rev B with the window and door schedule.
+7. Rev C: corrections from checking Rev B against this brief (spans, plate height, leaf weight, lobby notes).
 
 ## Suggested next steps
 1. Send DA-01, DA-02 and DA-04 to the engineer, and DA-02 to DA-05 to the certifier.

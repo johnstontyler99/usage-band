@@ -218,7 +218,7 @@ function geom(S){
   bays.forEach(b=>{
     const endL=b.x0<1,endR=b.x1>W-1,jl=endL?F:h,jr=endR?F:h;
     if(b.t==='S'){R('pier',b.x0,0,b.x1,head);verts.push((b.x0+b.x1)/2);if(b.post){supports.push((b.x0+b.x1)/2);postV.push((b.x0+b.x1)/2);}return;}
-    if(b.t==='P'){R('steel',b.x0,0,b.x1,head);const cx=(b.x0+b.x1)/2;verts.push(cx);postV.push(cx);if(!endL&&!endR)supports.push(cx);return;}
+    if(b.t==='P'){R('steel',b.x0,0,b.x1,head);const cx=(b.x0+b.x1)/2;verts.push(cx);postV.push(cx);if(endL)supports[0]=cx;else if(endR)supports[1]=cx;else supports.push(cx);return;}
     if(!endL)verts.push(b.x0);
     if(b.t==='L'){
       glazedTiers(b,b.x0,b.x1,tierLines(),'win');

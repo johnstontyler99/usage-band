@@ -14,6 +14,6 @@ You're helping me, a builder, design, document and price a glazed infill wall fo
 
 **Files in this project:**
 - `01_Design-brief.md`: the decisions, dimensions, schedule, open items and history
-- `Pool-gable-infill_Drawing-pack_Rev-B.pdf`: A3 sheets DA-00 to DA-05 (elevation 1:50, plan 1:50, lobby 1:20, schedules and notes)
+- `Pool-gable-infill_Drawing-pack_Rev-C.pdf`: A3 sheets DA-00 to DA-05 (elevation 1:50, plan 1:50, lobby 1:20, schedules and notes)
 - `photos-and-sketches/`: site photos and my hand sketches (elevation, site plan, lobby)
 - Interactive layout tool (open in a browser): https://claude.ai/artifact/PYTKikyaUGRJmK1fuu9y4z

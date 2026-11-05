@@ -10,6 +10,6 @@ Open `index.html` in a browser. It's an interactive, to-scale elevation for the 
 
 Sliders update the elevation, the photo overlay and the opening schedule. Static snapshots: `elev_A.png`, `elev_B.png`, `elev_draft2.png`, `plan_draft2.png`, `mont_draft2.png` (Draft 2); `elev_A.png`, `elev_B.png` (earlier options).
 
-Drawing pack: `Pool-gable-infill_Drawing-pack_Rev-B.pdf` (A3, 6 sheets: DA-00 cover, DA-01 elevation 1:50, DA-02 plan 1:50, DA-03 lobby detail 1:20, DA-04 opening schedule, steel setout and notes, DA-05 window & door schedule).
+Drawing pack (Rev C): `Pool-gable-infill_Drawing-pack_Rev-C.pdf` (A3, 6 sheets: DA-00 cover, DA-01 elevation 1:50, DA-02 plan 1:50, DA-03 lobby detail 1:20, DA-04 opening schedule, steel setout and notes, DA-05 window & door schedule).
 
 Claude Project kit: `claude-project/` (instructions, design brief, drawing pack, photos and sketches), also zipped as `Pool-gable-infill_Claude-project-kit.zip`.
