@@ -558,7 +558,7 @@ function update(){
   const door=G.bays.find(b=>b.t==='D'),wide=G.bays.filter(b=>b.t==='L').reduce((m,b)=>b.w>m.w?b:m,{w:0});
   const chips=[
     S.centre==='door'?['Pivot doors',fmt(door.w)+' opening → 2 leaves ≈ '+fmt((door.w-50)/2)+' × '+fmt(door.dh)]:['Centre bay','fixed glass '+fmt(door.w)],
-    ...(S.kind==='posts'?[['Each window',fmt(wide.w)+' between post centres']]:[]),
+    ...(S.kind==='posts'?[['Each window',fmt(wide.w)+' clear between post faces']]:[]),
     ['Widest louvre bay',fmt(wide.w)+(wide.gal&&wide.gal.length>1?` (${wide.gal.length} galleries of ${fmt(wide.w/wide.gal.length)})`:'')],
     ['Lower glazing head',fmt(G.head)],
     ...(S.lobby&&S.centre==='door'?[['Lobby',fmt(S.lobW)+' × '+fmt(S.lobD)+', gate '+fmt(S.gateW)]]:[]),
