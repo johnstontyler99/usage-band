@@ -568,6 +568,7 @@ function update(){
   ];
   document.getElementById('chips').innerHTML=chips.map(([a,b])=>`<span class="chip">${a}: <b>${b}</b></span>`).join('');
   drawSVG(S,G);drawPlan(S,G);drawMontage(S,G);drawSchedule(G);
+  window.__pack={S:{...S},bays:G.bays.map(b=>({t:b.t,x0:b.x0,x1:b.x1,w:b.w,gal:b.gal||null,dh:b.dh||null})),posts:G.posts,spans:G.spans,apex:G.apex,head:G.head};
 }
 document.querySelectorAll('#mtoggle button').forEach(b=>b.onclick=()=>{showNew=b.dataset.m==='1';
   document.querySelectorAll('#mtoggle button').forEach(x=>x.setAttribute('aria-pressed',x===b));update();});
