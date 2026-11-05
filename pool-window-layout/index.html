@@ -54,7 +54,7 @@
 <body>
 <header>
   <h1>Pool alfresco gable: window layout concepts</h1>
-  <p><b>First draft:</b> a glazed wall that replaces the glass pool fence on the same line and becomes the pool barrier. It's an even grid, with fixed glass to the 1,200 fence line, louvres above and double pivot doors in the centre. The doors open into a small square glass-fenced lobby on the pool side, with a self-closing gate out to the pool. The opening is 11,844 wide, and the 3,110 plate height is floor to the top of the steel beam, where the 9.7° rake starts (apex about 4,120). Gable posts line through above. Drag the settings and every drawing, dimension and the schedule update. Options A and B are kept as alternatives.</p>
+  <p><b>First draft:</b> a glazed wall that replaces the glass pool fence on the same line and becomes the pool barrier. It's an even grid, with fixed glass to the 1,200 fence line, louvres with fixed security screens above, and double pivot doors in the centre. The doors open into a small square glass-fenced lobby on the pool side, with a self-closing gate out to the pool. The opening is 11,844 wide, and the 3,110 plate height is floor to the top of the steel beam, where the 9.7° rake starts (apex about 4,120). Gable posts line through above. Drag the settings and every drawing, dimension and the schedule update. Options A and B are kept as alternatives.</p>
 </header>
 <main>
 <section>
@@ -71,7 +71,7 @@
   <div class="legend">
     <span><i style="background:#2f3337"></i>Aluminium frames (charcoal to match existing)</span>
     <span><i style="background:#4a5056"></i>Steel beam / posts</span>
-    <span><i style="background:#d6e6ee"></i>Glass louvres</span>
+    <span><i style="background:#d6e6ee repeating-linear-gradient(45deg,#5d707a55 0 1px,transparent 1px 4px),#d6e6ee"></i>Glass louvres + fixed security screen</span>
     <span><i style="background:#c3dbe6"></i>Fixed glass</span>
     <span><i style="background:#e6e0d5"></i>Clad pier</span>
     <span><i style="background:none;border:1.5px dashed #a5462b"></i>Pool fence top line (1200)</span>
@@ -124,6 +124,7 @@
     <div>
       <h3>Louvres</h3>
       <ul>
+        <li><b>Every louvre gets a fixed security screen</b> (stainless mesh, e.g. Crimsafe or similar), so the louvres can open fully and still meet the barrier rules. Fit the screens on the pool side, so the louvre handles stay reachable from inside the alfresco. They must only come off with a tool.</li>
         <li>Glass louvre blades are usually limited to about 1,200 mm long, so any wider bay is split into galleries with a mullion. The "max gallery width" setting controls that.</li>
         <li>The door-head transom keeps gallery heights around 1.2 to 2.4 m, within what most louvre systems cover. Confirm with the supplier (e.g. Breezway or similar).</li>
         <li>For option C, keep the narrow and wide rhythm from your sketch by changing which bays are louvres and which are fixed later. The grid stays the same.</li>
@@ -134,7 +135,8 @@
         <ul>
           <li><b>Doors open into a fenced lobby, not the pool area.</b> The square glass fence on the pool side, with its gate, separates the doors from the pool, so the pivot doors sit outside the barrier.</li>
           <li><b>Gate:</b> self-closing and self-latching, with the latch at 1,500 or higher, opening <i>into</i> the lobby (away from the pool), as in your sketch. The lobby needs to be deep enough for the gate to swing clear (the page warns you if it isn't).</li>
-          <li><b>Fixed glass from the floor to 1,200</b> along the rest of the wall is non-climbable and matches the fence height. The louvres above will probably need restrictors (opening under 105&nbsp;mm) or fixed screens. Confirm what's required at that height.</li>
+          <li><b>Fixed glass from the floor to 1,200</b> along the rest of the wall is non-climbable and matches the fence height. </li>
+          <li><b>The louvres have fixed security screens</b>, so they can open fully without restrictors. The screens must be fixed so they can't be removed without tools (AS&nbsp;1926.1 and the NSW rules). Give the certifier the screen product's specification.</li>
           <li>Keep the inside of the lobby clear of anything climbable within 900 of the fence, which is easy because the doors and walls are glass. The bench seat is on the pool side, which is fine.</li>
           <li>The old fence's glass panels and spigots could be reused for the lobby.</li>
         </ul>
@@ -201,7 +203,7 @@ function geom(S){
       let typ=mode==='door'?(S.hl==='louvre'?'louvre':'fixed'):isBase?'fixed':isTop?(S.hl==='louvre'?'louvre':'fixed'):'louvre';
       const gal=b.gal||[[x0,x1]];
       gal.forEach(([a,c])=>{R(typ==='louvre'?'louvre':'glass',a,y0,c,y1);if(typ==='louvre')blades(a,c,y0,y1);
-        items.push({kind:typ==='louvre'?'Glass louvre':'Fixed glass',zone:mode==='door'?'Door highlight':(isBase?'Base (fence line)':isTop?'Highlight':'Main'),w:c-a,h:y1-y0});});
+        items.push({kind:typ==='louvre'?'Glass louvre + security screen':'Fixed glass',zone:mode==='door'?'Door highlight':(isBase?'Base (fence line)':isTop?'Highlight':'Main'),w:c-a,h:y1-y0});});
       if(k>0)R('frame',x0,y0-h,x1,y0+h);
     }
     gal_mullions(b);
@@ -305,6 +307,9 @@ function drawSVG(S,G){
   const st={pier:{fill:'#e6e0d5',stroke:'#bdb3a2','stroke-width':8},glass:{fill:'#c3dbe6'},louvre:{fill:'#d6e6ee'},frame:{fill:'#2f3337'},steel:{fill:'#4a5056',stroke:'#2b2f33','stroke-width':6},hw:{fill:'#c9ced2'}};
   ['pier','glass','louvre'].forEach(k=>G.L[k].forEach(p=>el('polygon',{points:P(p),...st[k]},g)));
   G.L.blade.forEach(([[a,y],[c]])=>el('line',{x1:a,y1:-y,x2:c,y2:-y,stroke:'#86a3b1','stroke-width':9},g));
+  const mp=el('pattern',{id:'mesh',width:60,height:60,patternUnits:'userSpaceOnUse'},defs);
+  el('path',{d:'M0 0L60 60M60 0L0 60',stroke:'#4f626c','stroke-width':3,opacity:0.55},mp);
+  G.L.louvre.forEach(p=>el('polygon',{points:P(p),fill:'url(#mesh)'},g));
   ['frame','steel','hw'].forEach(k=>G.L[k].forEach(p=>el('polygon',{points:P(p),...st[k]},g)));
   // door swing marks
   G.bays.filter(b=>b.t==='D'&&b.dl).forEach(b=>{const dh=b.dh;b.dl.forEach(([a,c],i)=>{
@@ -452,7 +457,7 @@ function drawMontage(S,G){
   const poly=(p,fill)=>{ctx.beginPath();p.map(T).forEach(([u,v],i)=>i?ctx.lineTo(u,v):ctx.moveTo(u,v));ctx.closePath();ctx.fillStyle=fill;ctx.fill();};
   G.L.pier.forEach(p=>poly(p,'#d8d0c2'));
   G.L.glass.forEach(p=>poly(p,'rgba(185,212,226,0.20)'));
-  G.L.louvre.forEach(p=>poly(p,'rgba(185,212,226,0.26)'));
+  G.L.louvre.forEach(p=>poly(p,'rgba(60,72,80,0.30)'));
   ctx.strokeStyle='rgba(35,40,45,0.55)';ctx.lineWidth=1.1;
   G.L.blade.forEach(([a,b])=>{const A=T(a),B=T(b);ctx.beginPath();ctx.moveTo(...A);ctx.lineTo(...B);ctx.stroke();});
   G.L.frame.forEach(p=>poly(p,'#26292c'));
@@ -469,7 +474,7 @@ function drawSchedule(G){
   const groups=new Map();
   G.items.forEach(it=>{const key=[it.kind,it.zone,Math.round(it.w),Math.round(it.h),Math.round(it.h2||0)].join('|');
     const g=groups.get(key)||{...it,q:0};g.q++;groups.set(key,g);});
-  const order={'Pool fence glass':4,'Glass pool gate':5,'Pivot door leaf':0,'Glass louvre':1,'Fixed glass':2,'Raked fixed glass':3};
+  const order={'Pool fence glass':4,'Glass pool gate':5,'Pivot door leaf':0,'Glass louvre + security screen':1,'Fixed glass':2,'Raked fixed glass':3};
   const rows=[...groups.values()].sort((a,b)=>order[a.kind]-order[b.kind]||a.zone.localeCompare(b.zone)||b.w-a.w);
   let html='<tr><th>Ref</th><th>Type</th><th>Zone</th><th class="n">Width</th><th class="n">Height</th><th class="n">Qty</th><th class="n">Area m² (total)</th></tr>';
   let tot=0;
