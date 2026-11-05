@@ -54,7 +54,7 @@
 <body>
 <header>
   <h1>Pool alfresco gable: window layout concepts</h1>
-  <p>Glazed infill on the line of the existing glass pool fence. The opening is 11,844 wide with a 3,110 plate height and a 9.7° raked ceiling, which puts the apex about 4,120 above the floor. There's a steel beam at plate height, double doors in the centre, louvres either side and gable posts above. Drag the settings and every drawing, dimension and the schedule update.</p>
+  <p><b>First draft:</b> a glazed wall that replaces the glass pool fence on the same line and becomes the pool barrier. It's an even grid, with fixed glass to the 1,200 fence line, louvres above and double pivot doors in the centre. The doors open into a small square glass-fenced lobby on the pool side, with a self-closing gate out to the pool. The opening is 11,844 wide, and the 3,110 plate height is floor to the top of the steel beam, where the 9.7° rake starts (apex about 4,120). Gable posts line through above. Drag the settings and every drawing, dimension and the schedule update. Options A and B are kept as alternatives.</p>
 </header>
 <main>
 <section>
@@ -75,7 +75,14 @@
     <span><i style="background:#c3dbe6"></i>Fixed glass</span>
     <span><i style="background:#e6e0d5"></i>Clad pier</span>
     <span><i style="background:none;border:1.5px dashed #a5462b"></i>Pool fence top line (1200)</span>
+    <span><i style="background:#fff;border:2px solid #a5462b;border-radius:50%"></i>Pivot point (top and bottom)</span>
   </div>
+</section>
+
+<section>
+  <h2>2b · Plan at the doors: pool-side lobby (to scale, mm)</h2>
+  <div class="svgwrap"><svg id="plan" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div class="cap">Oriented like your sketch, with the pool side at the top and the alfresco at the bottom. The pivot doors swing into the alfresco. The lobby fence (1,200 glass, so the panels from the old fence could be reused) wraps the doors on the pool side. The gate opens into the lobby, away from the pool. The bench seat is indicative, from your sketch.</div>
 </section>
 
 <section>
@@ -121,21 +128,24 @@
         <li>The door-head transom keeps gallery heights around 1.2 to 2.4 m, within what most louvre systems cover. Confirm with the supplier (e.g. Breezway or similar).</li>
         <li>For option C, keep the narrow and wide rhythm from your sketch by changing which bays are louvres and which are fixed later. The grid stays the same.</li>
       </ul>
-      <h3>Pool barrier: check before locking in</h3>
+      <h3>Pool barrier: wall + lobby</h3>
       <div class="callout">
-        Once this wall replaces the glass fence, it <b>becomes part of the pool barrier</b>. Under NSW pool rules and AS&nbsp;1926.1 (other states are similar), pools built under the post-2010 rules generally can't have a door from the house opening straight into the pool area. Openable windows and louvres in a barrier wall also have to be restricted so a 105&nbsp;mm sphere can't pass through, or be fitted with fixed security screens. Open louvre gaps usually exceed that. Ways around it:
+        The wall replaces the glass fence, so it is the pool barrier (NSW Swimming Pools Act and Regulation, AS&nbsp;1926.1). How the draft meets that:
         <ul>
-          <li>keep the existing glass fence as the barrier;</li>
-          <li>use fixed glass to 1200 (option C) and restrict or screen the louvres;</li>
-          <li>or swap the doors for fixed glass and keep access through a compliant gate.</li>
+          <li><b>Doors open into a fenced lobby, not the pool area.</b> The square glass fence on the pool side, with its gate, separates the doors from the pool, so the pivot doors sit outside the barrier.</li>
+          <li><b>Gate:</b> self-closing and self-latching, with the latch at 1,500 or higher, opening <i>into</i> the lobby (away from the pool), as in your sketch. The lobby needs to be deep enough for the gate to swing clear (the page warns you if it isn't).</li>
+          <li><b>Fixed glass from the floor to 1,200</b> along the rest of the wall is non-climbable and matches the fence height. The louvres above will probably need restrictors (opening under 105&nbsp;mm) or fixed screens. Confirm what's required at that height.</li>
+          <li>Keep the inside of the lobby clear of anything climbable within 900 of the fence, which is easy because the doors and walls are glass. The bench seat is on the pool side, which is fine.</li>
+          <li>The old fence's glass panels and spigots could be reused for the lobby.</li>
         </ul>
-        Get a pool certifier or council to sign off before ordering.
+        <b>Get the certifier to confirm the lobby arrangement before detailing.</b>
       </div>
-      <h3>To confirm on site</h3>
+      <h3>Still to confirm</h3>
       <ul>
-        <li>Is the 3,110 to the top of the plate (where the rake starts) or to the underside of the beam?</li>
-        <li>The width at floor level against the width at the plate (are the brick returns plumb?), and the slab fall at the fence line.</li>
-        <li>The doors: hinged or sliding, which way they swing, and the leaf weights (option C's leaves are about 960 wide).</li>
+        <li>The lobby size. The page assumes 2,400 wide × 1,500 deep, centred on the doors, from the proportions in your plan sketch, with a 900 gate. Are those right?</li>
+        <li>Pivot doors: full height (shown) or to the transom; the pivot hardware brand and leaf weight. At about 960 × 2,860 with 10.38 laminated glass, each leaf is roughly 70–80 kg. Should they open both ways, and is a floor spring wanted?</li>
+        <li>Is the width at floor level the same as at the plate (are the brick returns plumb?), and what's the slab fall at the fence line? This matters for the pivot floor boxes and sill drainage.</li>
+        <li>The steel beam size from the engineer. The page assumes 200 deep within the 3,110.</li>
       </ul>
     </div>
   </div>
@@ -147,9 +157,9 @@
 const PRESETS={
   A:{label:'A · As sketched',blurb:'Narrow · wide · narrow louvres either side of central double doors, with clad piers between the openings, as in your sketch.',kind:'sketch',n:700,pier:250,door:1800,base:false,hl:'louvre',gpps:1},
   B:{label:'B · Sketch rhythm, all glass',blurb:'The same narrow · wide · narrow rhythm, but with slim coupled frames instead of piers, so it reads as one glass screen like the fence.',kind:'glazed',n:900,door:1800,base:false,hl:'louvre',gpps:2},
-  C:{label:'C · Fence-line grid (recommended)',blurb:'Equal modules, a fixed glass base continuing the 1200 fence line, louvres above, and every vertical lining through to a gable post.',kind:'grid',modules:12,base:true,hl:'louvre',gpps:2},
+  C:{label:'C · Fence-line grid (first draft)',blurb:'Equal modules, a fixed glass base continuing the 1200 fence line, louvres above, double pivot doors in the centre, and every vertical lining through to a gable post.',kind:'grid',modules:12,base:true,hl:'louvre',gpps:2},
 };
-const BASE={W:11844,H:3110,pitch:9.7,beam:200,doorHead:2400,maxGal:1200,fence:1200};
+const BASE={W:11844,H:3110,pitch:9.7,beam:200,doorHead:2400,maxGal:1200,fence:1200,doorFull:true,centre:'door',pivotOff:180,lobby:true,lobW:2400,lobD:1500,gateW:900};
 let S={...BASE,preset:'C',...PRESETS.C};
 let showNew=true;
 
@@ -207,15 +217,27 @@ function geom(S){
       R('frame',b.x0,0,b.x0+jl,head);R('frame',b.x1-jr,0,b.x1,head);
       R('frame',b.x0,0,b.x1,F);R('frame',b.x0,head-F,b.x1,head);
     }
+    if(b.t==='D'&&S.centre==='fixed'){
+      b.gal=[[b.x0,(b.x0+b.x1)/2],[(b.x0+b.x1)/2,b.x1]];
+      const lines=tierLines();
+      for(let k=0;k<lines.length-1;k++){const y0=lines[k],y1=lines[k+1];
+        b.gal.forEach(([a,c])=>{R('glass',a,y0,c,y1);items.push({kind:'Fixed glass',zone:'Centre bay (no doors)',w:c-a,h:y1-y0});});
+        if(k>0)R('frame',b.x0,y0-h,b.x1,y0+h);}
+      R('frame',b.x0+b.w/2-h,0,b.x0+b.w/2+h,head);
+      R('frame',b.x0,0,b.x0+jl,head);R('frame',b.x1-jr,0,b.x1,head);R('frame',b.x0,0,b.x1,F);R('frame',b.x0,head-F,b.x1,head);
+      if(S.kind!=='sketch'){[b.x0,b.x1].forEach(x=>{R('steel',x-50,0,x+50,head);supports.push(x);});}
+      b.dl=null;return;
+    }
     if(b.t==='D'){
-      const mid=(b.x0+b.x1)/2,dh=Math.min(S.doorHead,head);
+      const mid=(b.x0+b.x1)/2,dh=S.doorFull?head-F:Math.min(S.doorHead,head);
       [[b.x0+jl,mid],[mid,b.x1-jr]].forEach(([a,c],i)=>{
         R('glass',a,0,c,dh);
         R('frame',a,0,a+70,dh);R('frame',c-70,0,c,dh);R('frame',a,dh-70,c,dh);R('frame',a,0,c,120);
-        const hx=i===0?c-125:a+110;R('hw',hx,950,hx+16,1350);
-        items.push({kind:'Door leaf',zone:'Double doors',w:c-a,h:dh});
+        const hx=i===0?c-150:a+125;R('hw',hx,450,hx+25,Math.min(1950,dh-300));
+        items.push({kind:'Pivot door leaf',zone:'Centre pivot doors',w:c-a,h:dh});
       });
-      if(dh<head-150){glazedTiers({},b.x0,b.x1,[dh,head],'door');R('frame',b.x0,dh-h,b.x1,dh+h);}
+      if(!S.doorFull&&dh<head-150){glazedTiers({},b.x0,b.x1,[dh,head],'door');R('frame',b.x0,dh-h,b.x1,dh+h);}
+      b.dh=dh;
       R('frame',b.x0,0,b.x0+jl,head);R('frame',b.x1-jr,0,b.x1,head);R('frame',b.x0,head-F,b.x1,head);
       if(S.kind!=='sketch'){[b.x0,b.x1].forEach(x=>{R('steel',x-50,0,x+50,head);supports.push(x);});}
       b.dl=[[b.x0+jl,mid],[mid,b.x1-jr]];
@@ -245,6 +267,13 @@ function geom(S){
   R('frame',0,H,F,yc(F));R('frame',W-F,H,W,yc(W-F));
   // beam
   R('steel',0,head,W,H);
+  if(S.lobby){
+    const front=S.lobW-S.gateW;
+    items.push({kind:'Pool fence glass',zone:'Lobby sides',w:S.lobD,h:S.fence},{kind:'Pool fence glass',zone:'Lobby sides',w:S.lobD,h:S.fence});
+    const hx=S.lobW*0.35,pA=hx,pB=S.lobW-hx-S.gateW;
+    [pA,pB].forEach(w=>{if(w>50)items.push({kind:'Pool fence glass',zone:'Lobby front',w,h:S.fence});});
+    items.push({kind:'Glass pool gate',zone:'Lobby front (self-closing)',w:S.gateW,h:S.fence});
+  }
   supports.sort((a,b)=>a-b);
   const spans=[];for(let i=0;i<supports.length-1;i++)spans.push(supports[i+1]-supports[i]);
   return {L,bays,posts,apex,head,yc,items,spans};
@@ -278,12 +307,25 @@ function drawSVG(S,G){
   G.L.blade.forEach(([[a,y],[c]])=>el('line',{x1:a,y1:-y,x2:c,y2:-y,stroke:'#86a3b1','stroke-width':9},g));
   ['frame','steel','hw'].forEach(k=>G.L[k].forEach(p=>el('polygon',{points:P(p),...st[k]},g)));
   // door swing marks
-  G.bays.filter(b=>b.t==='D').forEach(b=>{const dh=Math.min(S.doorHead,G.head);b.dl.forEach(([a,c],i)=>{
-    const hinge=i===0?a:c,free=i===0?c:a;
-    el('polyline',{points:P([[free,90],[hinge,dh/2],[free,dh-90]]),fill:'none',stroke:'#5d6a72','stroke-width':10,'stroke-dasharray':'50 35'},g);});
+  G.bays.filter(b=>b.t==='D'&&b.dl).forEach(b=>{const dh=b.dh;b.dl.forEach(([a,c],i)=>{
+    const px=i===0?a+S.pivotOff:c-S.pivotOff,free=i===0?c:a;
+    el('line',{x1:px,y1:-20,x2:px,y2:-(dh+20),stroke:'#a5462b','stroke-width':8,'stroke-dasharray':'120 40 20 40'},g);
+    [[px,0],[px,dh]].forEach(([x,y])=>el('circle',{cx:x,cy:-y,r:38,fill:'#fff',stroke:'#a5462b','stroke-width':10},g));
+    el('polyline',{points:P([[free,90],[px,dh/2],[free,dh-90]]),fill:'none',stroke:'#5d6a72','stroke-width':10,'stroke-dasharray':'50 35'},g);});
+    const tl=el('text',{x:(b.x0+b.x1)/2,y:-(b.dh+(G.head-b.dh)/2)+(S.doorFull?-140:40),'text-anchor':'middle','font-size':95,fill:S.doorFull?'#444':'#27414d'},g);tl.textContent=S.doorFull?'':'';
   });
   // pier labels
   G.bays.filter(b=>b.t==='S'&&b.post).forEach(b=>{const t=el('text',{x:(b.x0+b.x1)/2,y:-1700,'text-anchor':'middle','font-size':95,fill:'#7b705f',transform:`rotate(-90 ${(b.x0+b.x1)/2} -1700)`},g);t.textContent='steel post (clad)';});
+  if(S.lobby&&S.centre==='door'){
+    const lx0=W/2-S.lobW/2,lx1=W/2+S.lobW/2,hx=S.lobW*0.35;
+    // plan x -> elevation x mirrored
+    const ex=x=>W-x;
+    const g0=ex(lx0+hx),g1=ex(lx0+hx+S.gateW);
+    el('rect',{x:lx0,y:-S.fence,width:S.lobW,height:S.fence,fill:'rgba(120,170,195,0.18)',stroke:'#2d6f8c','stroke-width':14},g);
+    el('rect',{x:Math.min(g0,g1),y:-(S.fence-60),width:S.gateW,height:S.fence-110,fill:'rgba(45,111,140,0.10)',stroke:'#2d6f8c','stroke-width':12,'stroke-dasharray':'60 30'},g);
+    [lx0,lx1,g0,g1].forEach(x=>el('rect',{x:x-25,y:-S.fence-30,width:50,height:S.fence+30,fill:'#2f3337'},g));
+    const lt2=el('text',{x:W/2,y:-(S.fence*0.5),'text-anchor':'middle','font-size':95,fill:'#1d5670',stroke:'#fff','stroke-width':22,'paint-order':'stroke'},g);lt2.textContent='lobby fence + gate (in front)';
+  }
   // fence datum
   el('line',{x1:-1300,y1:-S.fence,x2:W+560,y2:-S.fence,stroke:'#a5462b','stroke-width':14,'stroke-dasharray':'90 60'},g);
   const ft=el('text',{x:-1300,y:-(S.fence+60),'font-size':105,fill:'#a5462b'},g);ft.textContent='fence top 1200';
@@ -308,6 +350,76 @@ function drawSVG(S,G){
   const t2=el('text',{x:lx-60,y:-S.H/2,stroke:'none','text-anchor':'middle',transform:`rotate(-90 ${lx-60} ${-S.H/2})`},D);t2.textContent=fmt(S.H);
   // apex
   const t3=el('text',{x:W/2+160,y:-(G.apex+40),stroke:'none','font-size':105,fill:'#444'},D);t3.textContent=`apex ≈ ${fmt(G.apex)} AFL · ${S.pitch}° rake`;
+}
+
+/* ---------- plan ---------- */
+function drawPlan(S,G){
+  const svg=document.getElementById('plan');svg.innerHTML='';
+  const W=S.W,y=v=>-v; // pool side = +y (up)
+  const x0=-700,x1=W+700,yT=Math.max(S.lobD,800)+1100,yB=2500;
+  svg.setAttribute('viewBox',`${x0} ${-yT} ${x1-x0} ${yT+yB}`);
+  const g=el('g',{},svg);
+  // zones
+  el('rect',{x:-700,y:-yT,width:W+1400,height:yT,fill:'#eaf4f8'},g);
+  el('rect',{x:-700,y:0,width:W+1400,height:yB,fill:'#efece6'},g);
+  const lab=(x,yy,s,fs=150,fill='#6b7378',anc='middle')=>{const t=el('text',{x,y:yy,'text-anchor':anc,'font-size':fs,fill},g);t.textContent=s;return t;};
+  lab(600,-yT+260,'POOL SIDE',150,'#2d6f8c','start');lab(600,yB-200,'ALFRESCO',150,'#8a7f6d','start');
+  // brick returns
+  el('rect',{x:-500,y:-150,width:500,height:yB,fill:'#c9b79a',stroke:'#8e7c63','stroke-width':10},g);
+  el('rect',{x:W,y:-150,width:500,height:yB,fill:'#c9b79a',stroke:'#8e7c63','stroke-width':10},g);
+  // wall: frames line, door gap
+  const door=G.bays.find(b=>b.t==='D');
+  const wallSeg=(a,c)=>el('rect',{x:a,y:-50,width:c-a,height:100,fill:'#2f3337'},g);
+  const glassSeg=(a,c)=>el('rect',{x:a,y:-12,width:c-a,height:24,fill:'#8fc0d6'},g);
+  if(S.centre==='door'){glassSeg(0,door.x0);glassSeg(door.x1,W);}else glassSeg(0,W);
+  const marks=[0,W];G.bays.forEach(b=>{marks.push(b.x0);(b.gal||[]).forEach(([a])=>marks.push(a));});
+  [...new Set(marks.map(Math.round))].forEach(m=>wallSeg(m-25,m+25));
+  G.bays.filter(b=>b.t==='S').forEach(b=>wallSeg(b.x0,b.x1));
+  // posts at door jambs
+  if(S.kind!=='sketch')[door.x0,door.x1].forEach(x=>el('rect',{x:x-50,y:-50,width:100,height:100,fill:'#4a5056',stroke:'#222','stroke-width':8},g));
+  // pivot doors swinging into alfresco (down)
+  if(S.centre==='door'&&door.dl){
+    door.dl.forEach(([a,c],i)=>{
+      const px=i===0?a+S.pivotOff:c-S.pivotOff,long=(c-a)-S.pivotOff,dir=i===0?1:-1;
+      el('line',{x1:px,y1:-S.pivotOff,x2:px,y2:long,stroke:'#2f3337','stroke-width':40},g); // open leaf (90°)
+      el('path',{d:`M ${px+dir*long} 0 A ${long} ${long} 0 0 ${i===0?1:0} ${px} ${long}`,fill:'none',stroke:'#5d6a72','stroke-width':10,'stroke-dasharray':'50 35'},g);
+      el('path',{d:`M ${px-dir*S.pivotOff} 0 A ${S.pivotOff} ${S.pivotOff} 0 0 ${i===0?1:0} ${px} ${-S.pivotOff}`,fill:'none',stroke:'#5d6a72','stroke-width':10,'stroke-dasharray':'30 25'},g);
+      el('circle',{cx:px,cy:0,r:45,fill:'#fff',stroke:'#a5462b','stroke-width':12},g);
+    });
+    lab((door.x0+door.x1)/2,Math.max(...door.dl.map(([a,c])=>c-a))+300,'double pivot doors',120,'#333');
+  }
+  // lobby
+  if(S.lobby&&S.centre==='door'){
+    const lx0=W/2-S.lobW/2,lx1=W/2+S.lobW/2,D=S.lobD,hx=lx0+S.lobW*0.35,gx1=hx+S.gateW;
+    el('rect',{x:lx0,y:-D,width:S.lobW,height:D,fill:'rgba(255,255,255,0.55)'},g);
+    const fence=(xa,ya,xb,yb)=>el('line',{x1:xa,y1:-ya,x2:xb,y2:-yb,stroke:'#2d6f8c','stroke-width':36},g);
+    fence(lx0,0,lx0,D);fence(lx1,0,lx1,D);fence(lx0,D,hx,D);fence(gx1,D,lx1,D);
+    // gate: hinged at hx, swings into lobby (down), away from pool
+    const ga=Math.PI*0.42,gxE=hx+S.gateW*Math.cos(ga),gyE=D-S.gateW*Math.sin(ga);
+    el('line',{x1:hx,y1:-D,x2:gxE,y2:-gyE,stroke:'#2d6f8c','stroke-width':28},g);
+    el('path',{d:`M ${gx1} ${-D} A ${S.gateW} ${S.gateW} 0 0 1 ${gxE} ${-gyE}`,fill:'none',stroke:'#2d6f8c','stroke-width':10,'stroke-dasharray':'40 30'},g);
+    [[lx0,D],[lx1,D],[hx,D],[gx1,D]].forEach(([xx,yy])=>el('rect',{x:xx-40,y:-yy-40,width:80,height:80,fill:'#2f3337'},g));
+    lab(W/2,-D/2+50,'LOBBY',130,'#2d6f8c');
+    lab((hx+gx1)/2,-D-110,'self-closing gate',105,'#2d6f8c');
+    // bench seat (indicative) to the right of lobby, along the wall
+    const bw=Math.min(2000,W-lx1-300);
+    if(bw>400){const r=el('rect',{x:lx1+60,y:-500,width:bw,height:450,fill:'#d8c8ab',stroke:'#9d8a68','stroke-width':10},g);
+      for(let xx=lx1+260;xx<lx1+60+bw;xx+=200)el('line',{x1:xx,y1:-480,x2:xx,y2:-70,stroke:'#9d8a68','stroke-width':8},g);
+      lab(lx1+60+bw/2,-580,'bench seat (indicative)',100,'#7b6a4c');}
+    // dims
+    const D_=el('g',{stroke:'#333','stroke-width':8,fill:'#222','font-size':115},svg);
+    const tk=(x,yy)=>el('line',{x1:x-40,y1:-yy+40,x2:x+40,y2:-yy-40},D_);
+    const dy=D+420;el('line',{x1:lx0-120,y1:-dy,x2:lx1+120,y2:-dy},D_);[lx0,hx,gx1,lx1].forEach(x=>tk(x,dy));
+    [[lx0,hx],[hx,gx1],[gx1,lx1]].forEach(([a,c])=>{const t=el('text',{x:(a+c)/2,y:-dy-35,'text-anchor':'middle',stroke:'none'},D_);t.textContent=fmt(c-a);});
+    const dy2=D+780;el('line',{x1:lx0-120,y1:-dy2,x2:lx1+120,y2:-dy2},D_);[lx0,lx1].forEach(x=>tk(x,dy2));
+    const t2=el('text',{x:W/2,y:-dy2-35,'text-anchor':'middle',stroke:'none'},D_);t2.textContent='lobby '+fmt(S.lobW);
+    const vx=lx0-380;el('line',{x1:vx,y1:0,x2:vx,y2:-D},D_);tk(vx,0);tk(vx,D);
+    const t3=el('text',{x:vx-50,y:-D/2,'text-anchor':'middle',stroke:'none',transform:`rotate(-90 ${vx-50} ${-D/2})`},D_);t3.textContent=fmt(D);
+  }
+  // overall
+  const D2=el('g',{stroke:'#333','stroke-width':8,fill:'#222','font-size':120},svg);
+  el('line',{x1:-150,y1:yB-500,x2:W+150,y2:yB-500},D2);[0,W].forEach(x=>el('line',{x1:x-40,y1:yB-460,x2:x+40,y2:yB-540},D2));
+  const to=el('text',{x:W/2,y:yB-540,'text-anchor':'middle',stroke:'none'},D2);to.textContent=fmt(W)+' (gable wall on old fence line)';
 }
 
 /* ---------- photo montage ---------- */
@@ -357,7 +469,7 @@ function drawSchedule(G){
   const groups=new Map();
   G.items.forEach(it=>{const key=[it.kind,it.zone,Math.round(it.w),Math.round(it.h),Math.round(it.h2||0)].join('|');
     const g=groups.get(key)||{...it,q:0};g.q++;groups.set(key,g);});
-  const order={'Door leaf':0,'Glass louvre':1,'Fixed glass':2,'Raked fixed glass':3};
+  const order={'Pool fence glass':4,'Glass pool gate':5,'Pivot door leaf':0,'Glass louvre':1,'Fixed glass':2,'Raked fixed glass':3};
   const rows=[...groups.values()].sort((a,b)=>order[a.kind]-order[b.kind]||a.zone.localeCompare(b.zone)||b.w-a.w);
   let html='<tr><th>Ref</th><th>Type</th><th>Zone</th><th class="n">Width</th><th class="n">Height</th><th class="n">Qty</th><th class="n">Area m² (total)</th></tr>';
   let tot=0;
@@ -375,7 +487,12 @@ function controlsFor(S){
   if(S.kind!=='grid'){R('door','Door opening width',1500,2600,10);R('n','Narrow louvre bay',450,1300,10);}
   if(S.kind==='sketch')R('pier','Pier width',150,500,10);
   if(S.kind==='grid')c.push({key:'modules',label:'Modules across',type:'select',opts:[[10,'10 (≈1,184)'],[12,'12 (≈987)'],[14,'14 (≈846)']]});
-  R('doorHead','Door head / transom height',2040,2900,10);
+  c.push({key:'centre',label:'Centre bay',type:'select',opts:[['door','Double pivot doors'],['fixed','Fixed glass (barrier fallback)']]});
+  c.push({key:'doorFull',label:'Pivot door height',type:'select',opts:[[1,'Full height to beam'],[0,'To transom + highlight']]});
+  R('pivotOff','Pivot offset from jamb',100,400,10);
+  c.push({key:'lobby',label:'Pool-side lobby fence',type:'select',opts:[[1,'Yes (doors open into lobby)'],[0,'No']]});
+  R('lobW','Lobby width',1800,4000,10);R('lobD','Lobby depth',1000,2500,10);R('gateW','Gate width',800,1000,10);
+  R('doorHead','Transom height (louvre top)',2040,2900,10);
   R('beam','Steel beam depth',150,400,10);
   R('maxGal','Max louvre gallery width',800,1500,10);
   c.push({key:'gpps',label:'Gable posts each side of centre',type:'select',opts:[[0,'0 (centre post only)'],[1,'1'],[2,'2']]});
@@ -395,9 +512,9 @@ function renderControls(){
       const inp=lab.querySelector('input'),out=lab.querySelector('output');
       inp.oninput=()=>{S[c.key]=+inp.value;out.textContent=fmt(S[c.key]);update();};
     }else if(c.type==='select'){
-      const cur=c.key==='base'?(S.base?1:0):S[c.key];
+      const cur=(c.key==='base'||c.key==='doorFull'||c.key==='lobby')?(S[c.key]?1:0):S[c.key];
       lab.innerHTML=`<span>${c.label}</span><select>${c.opts.map(([v,t])=>`<option value="${v}" ${String(v)===String(cur)?'selected':''}>${t}</option>`).join('')}</select>`;
-      const s=lab.querySelector('select');s.onchange=()=>{const v=s.value;S[c.key]=c.key==='base'?v==='1':(c.key==='hl'?v:+v);update();};
+      const s=lab.querySelector('select');s.onchange=()=>{const v=s.value;S[c.key]=(c.key==='base'||c.key==='doorFull'||c.key==='lobby')?v==='1':((c.key==='hl'||c.key==='centre')?v:+v);update();};
     }else{
       lab.innerHTML=`<span>${c.label}</span><input type="number" step="${c.step||1}" value="${S[c.key]}">`;
       const inp=lab.querySelector('input');inp.onchange=()=>{const v=+inp.value;if(v>0){S[c.key]=v;update();}};
@@ -407,10 +524,10 @@ function renderControls(){
 }
 function renderPresets(){
   const box=document.getElementById('presets');box.innerHTML='';
-  Object.entries(PRESETS).forEach(([k,p])=>{
+  ['C','A','B'].map(k=>[k,PRESETS[k]]).forEach(([k,p])=>{
     const b=document.createElement('button');b.setAttribute('aria-pressed',S.preset===k);
     b.innerHTML=`<b>${p.label}</b><span>${p.blurb}</span>`;
-    b.onclick=()=>{S={...BASE,W:S.W,H:S.H,pitch:S.pitch,preset:k,...p};renderPresets();renderControls();update();};
+    b.onclick=()=>{S={...BASE,W:S.W,H:S.H,pitch:S.pitch,doorFull:S.doorFull,centre:S.centre,beam:S.beam,lobby:S.lobby,lobW:S.lobW,lobD:S.lobD,gateW:S.gateW,preset:k,...p};renderPresets();renderControls();update();};
     box.appendChild(b);
   });
 }
@@ -418,19 +535,22 @@ function update(){
   const G=geom(S);
   const warn=[];
   G.bays.forEach(b=>{if(b.w<=100)warn.push('The wide louvre bays have no width left. Reduce the narrow bays, piers or door width.');});
-  if(S.doorHead>=G.head-150)warn.push('The door head is at or near the beam, so the highlight row has been dropped.');
-  document.getElementById('warn').innerHTML=warn.length?`<div class="warnbox">${[...new Set(warn)].join('<br>')}</div>`:'';
+  if(S.doorHead>=G.head-150)warn.push('The transom is at or near the beam, so the highlight row has been dropped.');
+  if(S.centre==='door'&&S.lobby&&S.lobD<S.gateW+150)warn.push('The lobby is too shallow for the gate to swing inward. Make it deeper or use a narrower gate.');
+  if(S.centre==='door'&&!S.lobby)warn.push('<b>Pool barrier:</b> with the wall replacing the fence, pivot doors open straight into the pool area. In NSW that is generally not permitted for pools built under the post-2010 rules. Check with your certifier before going further. The “Centre bay → Fixed glass” setting shows the fallback.');
+  document.getElementById('warn').innerHTML=warn.length?`<div class="warnbox">${[...new Set(warn)].join('<br><br>')}</div>`:'';
   const door=G.bays.find(b=>b.t==='D'),wide=G.bays.filter(b=>b.t==='L').reduce((m,b)=>b.w>m.w?b:m,{w:0});
   const chips=[
-    ['Door opening',fmt(door.w)+' → 2 leaves ≈ '+fmt((door.w-50)/2)],
+    S.centre==='door'?['Pivot doors',fmt(door.w)+' opening → 2 leaves ≈ '+fmt((door.w-50)/2)+' × '+fmt(door.dh)]:['Centre bay','fixed glass '+fmt(door.w)],
     ['Widest louvre bay',fmt(wide.w)+(wide.gal&&wide.gal.length>1?` (${wide.gal.length} galleries of ${fmt(wide.w/wide.gal.length)})`:'')],
     ['Lower glazing head',fmt(G.head)],
+    ...(S.lobby&&S.centre==='door'?[['Lobby',fmt(S.lobW)+' × '+fmt(S.lobD)+', gate '+fmt(S.gateW)]]:[]),
     ['Apex',fmt(G.apex)+' AFL'],
     ['Gable posts at',G.posts.map(x=>fmt(x-S.W/2)).join(' · ')+' from centre'],
     ['Beam spans',G.spans.map(fmt).join(' / ')],
   ];
   document.getElementById('chips').innerHTML=chips.map(([a,b])=>`<span class="chip">${a}: <b>${b}</b></span>`).join('');
-  drawSVG(S,G);drawMontage(S,G);drawSchedule(G);
+  drawSVG(S,G);drawPlan(S,G);drawMontage(S,G);drawSchedule(G);
 }
 document.querySelectorAll('#mtoggle button').forEach(b=>b.onclick=()=>{showNew=b.dataset.m==='1';
   document.querySelectorAll('#mtoggle button').forEach(x=>x.setAttribute('aria-pressed',x===b));update();});
