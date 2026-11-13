@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:domain.com.au)",
+      "WebFetch(domain:www.domain.com.au)",
+      "WebFetch(domain:realestate.com.au)",
+      "WebFetch(domain:www.realestate.com.au)"
+    ]
+  }
+}
