@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countdown to Japan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: practical tradie job sheet, calm and readable on a phone in the ute
+   IDEA: a site diary run-sheet that ends at a boarding pass
+   PICTURE: the schedule itself, day rows with large hanging times, a red sun marking departure
+   COLOUR and TYPE: white paper, sumi ink, hinomaru red accent; Barlow Condensed + Barlow
+   LAYOUT: one column of days grouped by week, sticky week links, flight card at the end */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#121214);--ink:light-dark(#18181b,#ececee);--mute:light-dark(#6b6b73,#9a9aa3);--line:light-dark(#e6e6ea,#2a2a30);--soft:light-dark(#f6f6f8,#1b1b1f);--red:light-dark(#c8102e,#ff4d5e);--redsoft:light-dark(#fdeef0,#2a1418)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:860px;margin:0 auto}
+h1,h2,.time,.dnum{font-family:"Barlow Condensed",Barlow,sans-serif}
+header{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.05;margin:0;text-wrap:balance}
+.sub{color:var(--mute);margin:6px 0 0}
+.sun{display:flex;align-items:center;gap:14px}
+.disc{width:92px;height:92px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;text-align:center;line-height:1}
+.disc b{font:700 40px/1 "Barlow Condensed",sans-serif;display:block}
+.disc small{font-size:13px}
+nav.scroll{display:flex;gap:8px;overflow-x:auto;padding:12px max(5vw,16px);border-block:1px solid var(--line);background:var(--bg)}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:2}}
+nav a{flex:none;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-weight:500;font-size:15px}
+nav a:hover,nav a:focus-visible{border-color:var(--red);outline:none;color:var(--red)}
+html{scroll-padding-top:72px}
+h2{font-size:24px;margin:36px 0 8px;line-height:1.1}
+h2 span{color:var(--mute);font-weight:600;font-size:17px;margin-left:8px;font-family:Barlow,sans-serif}
+.day{display:grid;grid-template-columns:78px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.day.today{background:var(--soft);border-radius:10px;padding:16px 14px;margin-inline:-14px;border-top-color:transparent}
+.dnum{font-size:34px;line-height:1;font-weight:700}
+.dname{color:var(--mute);font-size:14px;margin-top:2px}
+.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--red);margin-top:6px}
+.items{display:grid;gap:10px}
+.it{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:baseline}
+.time{font-size:20px;font-weight:600;white-space:nowrap;text-align:right}
+.it.allday .time{font-size:15px;color:var(--mute);font-family:Barlow,sans-serif;font-weight:500}
+.it.work .time,.it.work .what{color:var(--mute)}
+.what{font-weight:500}
+.what .loc{display:block;color:var(--mute);font-weight:400;font-size:15px}
+.it.new .what::after{content:"new";margin-left:8px;font-size:12px;font-weight:600;color:var(--red);border:1px solid var(--red);border-radius:4px;padding:0 5px;vertical-align:2px}
+.it.key .time,.it.key .what{color:var(--red)}
+.todo{display:flex;gap:10px;align-items:flex-start;background:var(--redsoft);border-radius:8px;padding:10px 12px;margin-left:108px}
+.todo input{width:22px;height:22px;accent-color:var(--red);margin:2px 0 0;flex:none}
+.todo label{font-weight:500;cursor:pointer}
+.todo input:checked+label{text-decoration:line-through;color:var(--mute)}
+.empty{color:var(--mute);font-style:italic}
+.pass{margin-top:40px;border:2px solid var(--red);border-radius:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;overflow:hidden}
+.pass .l{padding:22px}
+.pass .r{background:var(--red);color:#fff;padding:22px;display:grid;place-items:center;text-align:center;font:700 28px/1.05 "Barlow Condensed",sans-serif;min-width:140px}
+.pass h3{margin:0 0 4px;font:700 30px/1.05 "Barlow Condensed",sans-serif}
+.pass p{margin:4px 0;color:var(--mute)}
+.key-legend{color:var(--mute);font-size:14px;margin-top:28px}
+@media(max-width:600px){
+ .day{grid-template-columns:56px minmax(0,1fr);gap:10px}
+ .dnum{font-size:28px}
+ .it{grid-template-columns:68px minmax(0,1fr);gap:10px}
+ .time{font-size:17px}
+ .todo{margin-left:0}
+ .pass{grid-template-columns:1fr}
+ .disc{width:76px;height:76px}.disc b{font-size:32px}
+}
+@media(prefers-reduced-motion:no-preference){.day.today{animation:glow 1.2s ease-out 1}@keyframes glow{from{box-shadow:0 0 0 3px var(--red)}to{box-shadow:0 0 0 0 transparent}}}
+</style>
+</head>
+<body>
+<div class="band">
+ <div class="wrap">
+  <header>
+   <div>
+    <h1>Countdown to Japan</h1>
+    <p class="sub">Mon 23 Nov – Tue 8 Dec 2026 · Arix shifts shown in grey</p>
+   </div>
+   <div class="sun"><div class="disc"><div><b id="days">15</b><small>days to go</small></div></div></div>
+  </header>
+ </div>
+</div>
+<nav class="scroll" aria-label="Weeks">
+ <a href="#wk1">This week</a><a href="#wk2">30 Nov – 6 Dec</a><a href="#wk3">Fly out</a>
+</nav>
+<main class="band" style="padding-top:8px">
+ <div class="wrap" id="cal"></div>
+ <div class="wrap">
+  <div class="pass" id="flight">
+   <div class="l">
+    <h3>Flight to Osaka · JQ 13</h3>
+    <p>Tue 8 Dec · departs Sydney 12:05pm · lands about 9:55pm Sydney time</p>
+    <p>Staying at Granbell Hotel Osaka, Chuo-ku · check out 13 Dec</p>
+   </div>
+   <div class="r">SYD<br>→ KIX</div>
+  </div>
+  <p class="key-legend">“new” marks the plans added today. To-do ticks are remembered on this device only.</p>
+ </div>
+</main>
+<script>
+{
+const W='Arix', WT='6:45–3:30';
+const work={summary:W,time:WT,cls:'work'};
+const weeks=[
+ {id:'wk1',title:'This week',range:'23 – 29 Nov',days:[
+  {d:'2026-11-23',items:[work,{time:'4:00',summary:"Swing past Adam's office",loc:'Finlay Thomas Plumbing · Buildsnap measure-ups'}]},
+  {d:'2026-11-24',items:[{time:'All day',summary:'Cowmeadow settlement deadline',cls:'allday key'},{time:'7:45',summary:'Hilux 4x4 pickup',loc:'Cardiff Toyota · EPC89Y'},work,{time:'4:00',summary:"Work at Juniper's",loc:'until 6:30',cls:'new'}],todo:[{id:'flash',t:'Order the flashing for Highfields'}]},
+  {d:'2026-11-25',items:[work,{time:'4:00',summary:"Work at Juniper's",loc:'until 6:30',cls:'new'}]},
+  {d:'2026-11-26',items:[{...work,time:'6:45–3:30'},{time:'3:45',summary:'Service NSW – tenant bond',loc:'Warners Bay · straight from work',cls:'new'},{time:'5:15',summary:'Christmas shopping with Chloe',loc:'Charlestown',cls:'new'}]},
+  {d:'2026-11-27',items:[work,{time:'3:45',summary:'Pick up blinds',loc:'Spotlight Bennetts Green',cls:'new'},{time:'4:30',summary:'Calmetto Road – sewer pump + blinds',cls:'new'}]},
+  {d:'2026-11-28',items:[{time:'All day',summary:'Highfields – eaves with Fletcher',cls:'allday new'}]},
+  {d:'2026-11-29',items:[{time:'All day',summary:"Catch-up: anything unfinished, or more at Juniper's",cls:'allday new'}]}
+ ]},
+ {id:'wk2',title:'Next week',range:'30 Nov – 6 Dec',days:[
+  {d:'2026-11-30',items:[work]},
+  {d:'2026-12-01',items:[work,{time:'6:00',summary:'J. Cole',loc:'until 10:00pm',cls:'key'}]},
+  {d:'2026-12-02',items:[work]},
+  {d:'2026-12-03',items:[{time:'All day',summary:'Court',cls:'allday key'},work]},
+  {d:'2026-12-04',items:[work]},
+  {d:'2026-12-05',items:[{time:'6:00',summary:'Slowlife Christmas Party',loc:'200 Wharf Rd, Newcastle · Asian fusion banquet $120pp'}]},
+  {d:'2026-12-06',items:[]}
+ ]},
+ {id:'wk3',title:'Fly out',range:'7 – 8 Dec',days:[
+  {d:'2026-12-07',items:[work,{time:'Evening',summary:'Pack',cls:'allday'}]},
+  {d:'2026-12-08',items:[{time:'12:05',summary:'Flight to Osaka · JQ 13',loc:'from Sydney',cls:'key'}]}
+ ]}
+];
+const DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const pad=n=>String(n).padStart(2,'0');
+const now=new Date();const todayKey=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+let done={};try{done=JSON.parse(localStorage.getItem('jp-todo')||'{}')}catch(e){}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const item=i=>`<div class="it ${i.cls||''}"><div class="time">${esc(i.time)}</div><div class="what">${esc(i.summary)}${i.loc?`<span class="loc">${esc(i.loc)}</span>`:''}</div></div>`;
+const day=x=>{const [y,m,d]=x.d.split('-').map(Number);const dt=new Date(y,m-1,d);const t=x.d===todayKey;
+ return `<div class="day${t?' today':''}"><div><div class="dnum">${d}</div><div class="dname">${DN[dt.getDay()]} ${MN[m-1]}</div>${t?'<span class="tag">Today</span>':''}</div>
+ <div class="items">${x.items.length?x.items.map(item).join(''):'<div class="empty">Nothing booked</div>'}
+ ${(x.todo||[]).map(o=>`<div class="todo"><input type="checkbox" id="td-${o.id}" data-id="${o.id}"${done[o.id]?' checked':''}><label for="td-${o.id}">To do: ${esc(o.t)}</label></div>`).join('')}</div></div>`};
+document.getElementById('cal').innerHTML=weeks.map(w=>`<h2 id="${w.id}">${w.title}<span>${w.range}</span></h2>${w.days.map(day).join('')}`).join('');
+document.getElementById('cal').addEventListener('change',e=>{const id=e.target.dataset.id;if(!id)return;done[id]=e.target.checked;try{localStorage.setItem('jp-todo',JSON.stringify(done))}catch(err){}});
+const fly=new Date(2026,11,8);const start=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const left=Math.max(0,Math.round((fly-start)/864e5));document.getElementById('days').textContent=left;
+}
+</script>
+</body>
+</html>
