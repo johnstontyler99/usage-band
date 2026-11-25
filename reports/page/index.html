@@ -73,6 +73,17 @@ ul.tight li{margin:4px 0}
 .dl li{break-inside:avoid;padding:10px 0;border-top:1px solid var(--line)}
 .dl b{display:block}
 .dl span{font-size:14px;color:var(--mute)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:28px 32px;margin:10px 0 8px}
+.gal figure{margin:0;display:flex;flex-direction:column}
+.zoom{all:unset;cursor:zoom-in;display:block;background:#fff;border:1px solid var(--line);padding:8px;border-radius:3px}
+.zoom:focus-visible{outline:3px solid var(--mem);outline-offset:2px}
+.zoom img{display:block;width:100%;height:260px;object-fit:contain}
+.gal figcaption{font-size:15px;color:var(--ink);margin-top:8px}
+.gal .src{display:block;margin-top:4px}
+.lb{position:fixed;inset:0;z-index:20;background:rgba(10,10,10,.88);display:flex;align-items:center;justify-content:center;padding:52px 12px 12px}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;background:#fff;object-fit:contain}
+.lb button{position:absolute;top:10px;right:12px;min-height:40px;padding:8px 14px;font:600 15px "Hanken Grotesk",sans-serif;background:#fff;color:#141414;border:0;border-radius:3px;cursor:pointer}
 .end{border-top:2px solid var(--ink)}
 @media(max-width:600px){table{font-size:14px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;white-space:normal}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.stack td:first-child{white-space:normal}}
 @media(prefers-reduced-motion:no-preference){.flow{stroke-dasharray:6 8;animation:flow 1.6s linear infinite}@keyframes flow{to{stroke-dashoffset:-28}}}
@@ -497,23 +508,45 @@ ul.tight li{margin:4px 0}
 </div></section>
 
 <section class="band" id="diagrams"><div class="wrap">
-<h2>Official diagrams to print for the site office</h2>
-<p>These are copyright (most are Standards Australia figures reproduced under licence), so they are linked here rather than copied onto this page. Download each from its source.</p>
-<ul class="dl">
-<li><b><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC Technical Feature, Feb 2017</a></b><span>AS 4654.2 Fig 2.9 level threshold with grated gutter (p.3), Fig 2.8 Options 1–2 step-down sub-sills (p.1), Table A1 heights (p.2), photo of a non-compliant door membrane. Standards Australia licence 1702-c008.</span></li>
-<li><b><a href="https://www.nsw.gov.au/sites/default/files/noindex/2025-07/nsw-guide-to-standards-and-tolerances-2017.pdf">NSW Guide to Standards and Tolerances 2017</a></b><span>Diagram 14.06B level threshold with grated gutter (p.59) and 14.06 step-down doorway (p.58). Clause 14.6 defect benchmark.</span></li>
-<li><b><a href="https://hia.com.au/-/media/files/our-industry/advocacy/projects/water-leakage-of-concrete-balconies-in-apartments---an-investigation/swinburne-university-investigation-of-water-leakage-in-residential-apartment-concrete-balconies.pdf">Swinburne / HIA balcony leakage investigation, Aug 2024</a></b><span>Figs 9–10 set-down slab with falls, pavers on pods or screed and tile (p.37). Figs 11–16 no-set-down details judged non-compliant (pp.38–42): what not to build.</span></li>
-<li><b><a href="https://efsg.det.nsw.edu.au/mpx_construction_handbook_waterproofing.pdf">Multiplex Construction Handbook – Waterproofing (NSW EFSG)</a></b><span>17223 balcony sill, double set-down vs hob, ≥10 mm gaps (p.90); 17221 overflow ≥25 mm below sill (p.88). 154 pages, about 40 MB.</span></li>
-<li><b><a href="https://www.nsw.gov.au/sites/default/files/2025-06/building-defects-library.pdf.pdf">Building Commission NSW Building Defects Library v1.1</a></b><span>Item 2.5, sliding door termination, quoting cl 2.8.3 and the façade engineer comment (p.13).</span></li>
-<li><b><a href="https://stormtech.com.au/documents/TDi-threshold-waterproofing_3.pdf">Stormtech TDi threshold waterproofing</a></b><span>Flush drain with separate sub-sill; membrane completed first to the drain flange; caulking, backing rod, 2 mm nylon separation.</span></li>
-<li><b><a href="https://stormtech.com.au/documents/100TDiS-threshold.pdf">Stormtech 100TDiS</a> and <a href="https://stormtech.com.au/documents/Premium-Threshold-Sill-Only.pdf">sill-only order form</a></b><span>Drain tray as sub-sill, separate overflow outlet; sizing rules for grates, track depth and channel length.</span></li>
-<li><b><a href="https://cdn.shopify.com/s/files/1/0246/5497/0958/files/J003221_Aquabocci_-_R47_Low_Profile_PDF_Spec_Sheet_ART1.pdf">Aquabocci R-47 Low Profile</a></b><span>Low-profile drain with EPDM sleeve under a three-track door (p.3).</span></li>
-<li><b><a href="https://www.specifyaws.com.au/cdn/lhjUiWS3K4Cy/703-productsheet.pdf">AWS SlideMASTER 703 recessed sill</a> · <a href="https://alspec.com.au/_assets/products/brochures/ProGlide-UltraFlat-Brochure.pdf">Alspec ProGlide UltraFlat</a></b><span>Flush door sills with published AS 2047 ratings (600 Pa, 630 Pa).</span></li>
-<li><b><a href="https://ardexaustralia.com/cad-category/liquid-membrane-external/">Ardex CAD library</a></b><span>D68–D70, D46–D48, D210–D211 door terminations (all step-down, useful for sub-sill and waterstop sequence); D55 channel drain; D66/D67 pedestals.</span></li>
-<li><b><a href="https://d39d3mj7qio96p.cloudfront.net/media/documents/BU583-Waterproof-decks.pdf">BRANZ Bulletin 583</a> · <a href="https://www.vikingroofspec.co.nz/media/j43n2enf/viking-buzon-details-full-set.pdf">Viking Buzon BZ03</a></b><span>New Zealand: level thresholds on timber decks and pedestal pavers with a 100 mm structural step. Method only, not AS 4654 evidence.</span></li>
-<li><b><a href="https://eu.schluter.com/statics/www_schlueter_gb_2x/downloads/cumulus/551852_Heft_A_Balkone_GB.pdf">Schlüter balcony guide (Heft A)</a></b><span>German DIN method: a door channel cuts the threshold from 15 cm to 5 cm. Not AS 4654 evidence.</span></li>
-</ul>
+<h2>Official diagrams</h2>
+<p>Copied from the published sources for your own reference. They are copyright, mostly Standards Australia figures reproduced under licence, so check before sharing this page beyond your own team. Click any diagram to enlarge it.</p>
+<h3>The level threshold: AS 4654.2 Figure 2.9</h3>
+<div class="gal">
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/nsw_14_06b.jpg" alt="NSW Guide Diagram 14.06B" loading="lazy"></button><figcaption>NSW Guide Diagram 14.06B: membrane at a wall opening where finishes don't allow an upturn. Gutter formed in the substrate, grate on a non-ferrous frame, flashing under the sill, waterstop, deck falling away. <span class="src"><a href="https://www.nsw.gov.au/sites/default/files/noindex/2025-07/nsw-guide-to-standards-and-tolerances-2017.pdf">NSW Guide to Standards and Tolerances 2017, p.59. Diagram is Standards Australia material reproduced with SAI Global permission.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/qbcc_fig2_9.jpg" alt="AS 4654.2 Fig 2.9 as originally drafted" loading="lazy"></button><figcaption>AS 4654.2 Fig 2.9 as originally drafted: same arrangement, no dimensions. <span class="src"><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC Technical Feature, Feb 2017, p.3. © Standards Australia, licence 1702-c008.</a></span></figcaption></figure>
+</div>
+<h3>Step-down doors, for comparison</h3>
+<div class="gal">
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/nsw_14_06.jpg" alt="NSW Guide Diagram 14.06" loading="lazy"></button><figcaption>NSW Guide Diagram 14.06: upstand at a doorway onto a deck. Sub-sill with weephole, waterstop angle, fillet; height "see Table 2.1" (read as Table A1). <span class="src"><a href="https://www.nsw.gov.au/sites/default/files/noindex/2025-07/nsw-guide-to-standards-and-tolerances-2017.pdf">NSW Guide 2017, p.58. Standards Australia material.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/qbcc_table_a1.jpg" alt="AS 4654.2 Table A1" loading="lazy"></button><figcaption>AS 4654.2 Table A1: vertical upward termination heights by wind class (informative). <span class="src"><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC 2017, p.2. © Standards Australia.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/qbcc_fig2_8_opt1.jpg" alt="AS 4654.2 Fig 2.8 Option 1" loading="lazy"></button><figcaption>AS 4654.2 Fig 2.8 Option 1: sub-sill flashing with PVC sill flip, 10 mm minimum gap, height per Appendix A. <span class="src"><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC 2017, p.1. © Standards Australia.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/qbcc_fig2_8_opt2.jpg" alt="AS 4654.2 Fig 2.8 Option 2" loading="lazy"></button><figcaption>AS 4654.2 Fig 2.8 Option 2: sub-sill installed before the door, sealed between sill, packers and membrane before drilling. <span class="src"><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC 2017, p.1. © Standards Australia.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/ardex_d70.jpg" alt="Ardex D70" loading="lazy"></button><figcaption>Ardex D70: termination at an external door with no sub-sill, liquid membrane. A step-down detail; useful for the waterstop, sealing and packer sequence. <span class="src"><a href="https://ardexaustralia.com/cad-category/liquid-membrane-external/">© Ardex Australia, CAD detail D70.</a></span></figcaption></figure>
+</div>
+<h3>Set-down slab and raised finishes</h3>
+<div class="gal">
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/swin_p37.jpg" alt="Swinburne/HIA Figs 9–10" loading="lazy"></button><figcaption>Swinburne/HIA Figs 9–10: integral set-down and fall in the slab, membrane into the drain, pavers on pods or screed and tile, overflow below the waterproofing line. <span class="src"><a href="https://hia.com.au/-/media/files/our-industry/advocacy/projects/water-leakage-of-concrete-balconies-in-apartments---an-investigation/swinburne-university-investigation-of-water-leakage-in-residential-apartment-concrete-balconies.pdf">Swinburne University / HIA, Aug 2024, p.37.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/mpx_17223.jpg" alt="Multiplex 17223" loading="lazy"></button><figcaption>Multiplex 17223: balcony window sill with double set-down (preferred) or hob; ≥10 mm tile-to-sub-sill gap; 10 mm perimeter gap. <span class="src"><a href="https://efsg.det.nsw.edu.au/mpx_construction_handbook_waterproofing.pdf">Multiplex Construction Handbook – Waterproofing, p.90 (hosted by NSW Dept of Education). © Multiplex.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/mpx_17221.jpg" alt="Multiplex 17221" loading="lazy"></button><figcaption>Multiplex 17221: overflow spitters at least 25 mm below the top of the sill, 25 mm overhang, membrane returned into the spitter. <span class="src"><a href="https://efsg.det.nsw.edu.au/mpx_construction_handbook_waterproofing.pdf">Multiplex handbook, p.88. © Multiplex.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/buzon_bz03.jpg" alt="Viking Buzon BZ03 (NZ)" loading="lazy"></button><figcaption>Viking Buzon BZ03 (NZ): pedestal pavers flush with the interior floor over a 100 mm structural step; membrane turned up 100 mm; 12 mm gap to joinery. <span class="src"><a href="https://www.vikingroofspec.co.nz/media/j43n2enf/viking-buzon-details-full-set.pdf">© Viking Roofspec / Buzon. NZ detail, method only.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/branz_bu583.jpg" alt="BRANZ BU583 (NZ)" loading="lazy"></button><figcaption>BRANZ BU583 (NZ): level thresholds on timber-framed decks; membrane 100 mm below floor level under removable pedestal panels or slatted timber. <span class="src"><a href="https://d39d3mj7qio96p.cloudfront.net/media/documents/BU583-Waterproof-decks.pdf">© BRANZ Bulletin 583, Apr 2015. NZ, method only.</a></span></figcaption></figure>
+</div>
+<h3>Threshold drains and flush door sills</h3>
+<div class="gal">
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/st_tdi.jpg" alt="Stormtech TDi" loading="lazy"></button><figcaption>Stormtech TDi: flush threshold drain with a separate door-track sub-sill; membrane completed first and dressed to the drain flange. <span class="src"><a href="https://stormtech.com.au/documents/TDi-threshold-waterproofing_3.pdf">© Stormtech Pty Ltd, TDi installation detail.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/st_100tdis.jpg" alt="Stormtech 100TDiS" loading="lazy"></button><figcaption>Stormtech 100TDiS: the drain tray is the sub-sill; primary and separate overflow outlets; the maker's NCC compliance claims (claims, not verified). <span class="src"><a href="https://stormtech.com.au/documents/100TDiS-threshold.pdf">© Stormtech Pty Ltd.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/st_100pstdis.jpg" alt="Stormtech 100PSTDiS section" loading="lazy"></button><figcaption>Stormtech 100PSTDiS section: tray depth 23–53 mm, overall depth up to 120 mm, 5 mm PVC packer, 1.5 mm clearances. <span class="src"><a href="https://stormtech.com.au/product/100pstdis">© Stormtech Pty Ltd.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/aquabocci.jpg" alt="Aquabocci R-47 Low Profile" loading="lazy"></button><figcaption>Aquabocci R-47 Low Profile: EPDM sleeve under a three-track door, side entry into the channel. <span class="src"><a href="https://cdn.shopify.com/s/files/1/0246/5497/0958/files/J003221_Aquabocci_-_R47_Low_Profile_PDF_Spec_Sheet_ART1.pdf">© Aquabocci, R-47 spec sheet p.3.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/aws_703.jpg" alt="AWS SlideMASTER 703 recessed sill" loading="lazy"></button><figcaption>AWS SlideMASTER 703 recessed sill: sill recessed into the slab with floating self-draining tiles; 600 Pa water rating. <span class="src"><a href="https://www.specifyaws.com.au/cdn/lhjUiWS3K4Cy/703-productsheet.pdf">© AWS product sheet.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/schluter.jpg" alt="Schlüter balcony guide (Germany)" loading="lazy"></button><figcaption>Schlüter balcony guide (Germany): a door-line channel lets the threshold drop from 15 cm to 5 cm, or under 2 cm with two channels. DIN method, not AS 4654 evidence. <span class="src"><a href="https://eu.schluter.com/statics/www_schlueter_gb_2x/downloads/cumulus/551852_Heft_A_Balkone_GB.pdf">© Schlüter-Systems, Heft A p.30.</a></span></figcaption></figure>
+</div>
+<h3>What not to build</h3>
+<div class="gal">
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/swin_p38.jpg" alt="Swinburne/HIA Fig 11" loading="lazy"></button><figcaption>Swinburne/HIA Fig 11: builders' preferred construction, screed to falls with no set-down. Judged non-compliant: termination height, membrane on a flat slab, no overflow, trip hazard. <span class="src"><a href="https://hia.com.au/-/media/files/our-industry/advocacy/projects/water-leakage-of-concrete-balconies-in-apartments---an-investigation/swinburne-university-investigation-of-water-leakage-in-residential-apartment-concrete-balconies.pdf">Swinburne University / HIA, Aug 2024, p.38.</a></span></figcaption></figure>
+<figure><button class="zoom" type="button" aria-label="Enlarge diagram"><img src="img/qbcc_photo.jpg" alt="QBCC site photo" loading="lazy"></button><figcaption>QBCC site photo: inadequate turn-up height, membrane not carried under the door sill. <span class="src"><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC 2017. © QBCC.</a></span></figcaption></figure>
+</div>
 </div></section>
+<div class="lb" id="lb" hidden><button type="button" id="lbx" aria-label="Close">Close</button><img id="lbi" alt=""></div>
 
 <section class="band end"><div class="wrap two">
 <div>
@@ -532,5 +565,10 @@ ul.tight li{margin:4px 0}
 </div>
 </div></section>
 
+<script>{const lb=document.getElementById('lb'),li=document.getElementById('lbi');
+const close=()=>{lb.hidden=true;li.removeAttribute('src')};
+document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{const i=b.querySelector('img');li.src=i.src;li.alt=i.alt;lb.hidden=false;document.getElementById('lbx').focus()}));
+lb.addEventListener('click',e=>{if(e.target!==li)close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close()});}</script>
 </body>
 </html>
