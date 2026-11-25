@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSW level threshold balconies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a builder's reference sheet, dense and exact
+   IDEA an architect's detail sheet: section cuts, hatched concrete, a blue membrane line, clause tags in the margin
+   PICTURE large hand-drawn sections of the three compliant level-threshold build-ups, membrane traced in blue
+   COLOUR white paper, black ink, concrete #d8d8d4 planes, membrane blue, brick red for "shall", safety yellow for 2027
+   TYPE Hanken Grotesk 600 display + Hanken Grotesk text
+   LAYOUT title and finding across the top, key figures row, then the big section full width; phone stacks, drawings scroll sideways */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#161615);--ink:light-dark(#141414,#ecebe7);--mute:light-dark(#5a5955,#a9a7a1);--line:light-dark(#d9d8d3,#34342f);--panel:light-dark(#f3f2ef,#1f1f1d);--conc:light-dark(#dcdcd7,#3b3b37);--hatch:light-dark(#a8a8a1,#5a5a53);--bed:light-dark(#eeeae0,#2c2b27);--tile:light-dark(#4a4a46,#9a9891);--mem:light-dark(#1450c8,#78a2ff);--water:light-dark(#9cc0ff,#2d4f8f);--red:light-dark(#c8371e,#ff8064);--yel:#ffe600;--glass:light-dark(#e6eef0,#26302f)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration-color:var(--mem);text-underline-offset:2px}
+.band{padding-block:clamp(24px,4vw,56px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1240px;margin:0 auto}
+.top{border-bottom:1px solid var(--line)}
+h1{font-size:clamp(32px,4.6vw,50px);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:0 0 16px;text-wrap:balance;max-width:22ch}
+h2{font-size:clamp(24px,2.6vw,30px);line-height:1.15;letter-spacing:-.01em;font-weight:600;margin:0 0 14px;text-wrap:balance;max-width:34ch}
+h3{font-size:18px;margin:28px 0 8px;font-weight:600}
+p{margin:0 0 12px;max-width:70ch}
+.lede{font-size:17px;max-width:78ch}
+.meta{color:var(--mute);font-size:14px;margin-top:8px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5em,1fr));gap:0;border-top:2px solid var(--ink);margin-top:22px}
+.figs div{padding:12px 14px 12px 0;border-bottom:1px solid var(--line)}
+.figs b{display:block;font-size:clamp(24px,2.6vw,30px);line-height:1.1;font-weight:600;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mute);display:block;margin-top:4px}
+nav.scroll{display:flex;gap:6px 18px;overflow-x:auto;padding:10px max(5vw,16px);border-bottom:1px solid var(--line);background:var(--bg);font-size:15px;white-space:nowrap}
+nav.scroll a{flex:none;text-decoration:none;padding:6px 0;min-height:32px}
+nav.scroll a:hover,nav.scroll a:focus-visible{text-decoration:underline}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:5}}
+figure{margin:0}
+.draw{overflow-x:auto;border:1px solid var(--line);background:var(--bg)}
+.draw svg{display:block;width:100%;min-width:780px;height:auto;color:var(--ink)}
+svg text{font:13px "Hanken Grotesk",system-ui,sans-serif;fill:currentColor;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .sm{font-size:12px;fill:var(--mute)}
+svg .hd{font-size:14px;font-weight:600}
+figcaption{font-size:15px;color:var(--mute);margin-top:10px;max-width:90ch}
+.key{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22em),1fr));gap:4px 28px;margin:14px 0 0;padding:0;list-style:none;font-size:15px}
+.key li{padding:6px 0;border-top:1px solid var(--line)}
+.key b{font-weight:600}
+.t{display:inline-block;font-size:12px;font-weight:600;line-height:1;padding:4px 6px 4px;border-radius:3px;white-space:nowrap;vertical-align:1px;border:1.5px solid currentColor}
+.t.m{background:var(--red);border-color:var(--red);color:#fff}
+.t.d{color:var(--red)}
+.t.y{background:var(--yel);border-color:var(--yel);color:#141414}
+.t.i,.t.g{color:var(--mute)}
+.t.x{color:var(--mute);border-style:dashed}
+.t.c{color:var(--ink)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 44px}
+@media(max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);padding:18px 20px;border-radius:4px}
+.panel p:last-child{margin-bottom:0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:6px 0 4px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px 9px 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-size:14px;border-bottom:2px solid var(--ink)}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td:first-child{white-space:nowrap}
+.scroll{overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--mute);margin:6px 0 4px}
+.src{font-size:14px;color:var(--mute)}
+.src a{color:var(--mute)}
+ul.tight{margin:6px 0 12px;padding-left:20px;max-width:75ch}
+ul.tight li{margin:4px 0}
+.dl{columns:2 22em;column-gap:44px;margin:0;padding:0;list-style:none}
+.dl li{break-inside:avoid;padding:10px 0;border-top:1px solid var(--line)}
+.dl b{display:block}
+.dl span{font-size:14px;color:var(--mute)}
+.end{border-top:2px solid var(--ink)}
+@media(max-width:600px){table{font-size:14px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em;white-space:normal}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;color:var(--mute);font-size:13px}.stack td:empty{display:none}.stack td:first-child{white-space:normal}}
+@media(prefers-reduced-motion:no-preference){.flow{stroke-dasharray:6 8;animation:flow 1.6s linear infinite}@keyframes flow{to{stroke-dashoffset:-28}}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band top"><div class="wrap">
+<h1>A level balcony door is compliant in NSW only if the slab still steps down</h1>
+<p class="lede">Under NCC 2022 (in force now) both houses (H2D8) and apartments (F1D5) send you to <b>AS 4654.2-2012</b>. Its one binding route for a flush door is <b>clause 2.8.3</b>: a sub-sill flashing inside the membrane system, and where levels leave no room for an upturn, the <b>membrane fixed under the sill and run into the stormwater system</b>. In practice that is the Figure 2.9 detail: a grated gutter formed in the slab across the full door width, with the deck falling away from it. From <b>1 May 2027</b>, NCC 2025 also makes Class 2 concrete balconies step down <b>70 mm in the structure</b>.</p>
+<div class="figs">
+<div><b>cl 2.8.3(b)</b><span>Membrane under the sill, terminated to stormwater</span></div>
+<div><b>40–180 mm</b><span>Table A1 upturn heights, N1 to N6 (informative)</span></div>
+<div><b>1 May 2027</b><span>NSW adopts NCC 2025</span></div>
+<div><b>70 mm</b><span>Structural step-down, Class 2–9 concrete, from 2027</span></div>
+<div><b>1:80</b><span>Fall in the structural slab, from 2027</span></div>
+<div><b>150 Pa</b><span>Minimum AS 2047 water rating for the door</span></div>
+</div>
+<p class="meta">Research to 25 November 2026. A reference, not legal or engineering advice. Confirm the NCC edition and details with your certifier and façade engineer.</p>
+</div></header>
+
+<nav class="scroll" aria-label="Sections">
+<a href="#build-ups">Build-ups</a><a href="#codes">Which rules apply</a><a href="#as4654">AS 4654.2</a><a href="#door">Door and drains</a><a href="#access">Accessibility</a><a href="#nsw-law">NSW law</a><a href="#checklist">Checklist</a><a href="#conflicts">Conflicting figures</a><a href="#diagrams">Official diagrams</a>
+</nav>
+
+<section class="band" id="build-ups"><div class="wrap">
+<h2>Three ways to build it, all with a recess in the structure</h2>
+<p>"Level" describes only the finished surfaces. Every compliant detail QBCC, NSW, Swinburne/HIA, Multiplex, BRANZ and the drain makers show keeps a recess in the slab: a gutter, a set-down, or a rebate for a drain. These sections are redrawn from those sources. They are <b>indicative, not to scale, and not construction details</b>.</p>
+
+<figure style="margin-top:20px">
+<div class="draw">
+<svg viewBox="0 0 1000 430" role="img" aria-label="Section through a level threshold: grated gutter formed in the slab in front of the door, membrane lining the gutter and running under the sill to a waterstop, deck falling away from the grate.">
+<defs>
+<pattern id="h1" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="var(--conc)"/><line x1="0" y1="0" x2="0" y2="10" stroke="var(--hatch)" stroke-width="1.2"/></pattern>
+<pattern id="bd" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="var(--bed)"/><circle cx="2" cy="3" r=".9" fill="var(--hatch)"/><circle cx="6" cy="6.5" r=".9" fill="var(--hatch)"/></pattern>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--mem)"/></marker>
+</defs>
+<text x="20" y="26" class="hd">1 · Gutter formed in the substrate (AS 4654.2 Fig 2.9 logic)</text>
+<text x="40" y="220" class="sm">EXTERNAL</text><text x="905" y="220" class="sm">INTERNAL</text>
+<line x1="10" y1="150" x2="990" y2="150" stroke="var(--mute)" stroke-dasharray="4 4" stroke-width="1"/>
+<text x="860" y="142" class="sm">FFL, level both sides</text>
+<path d="M20,186 L400,176 L406,250 L474,250 L480,176 L980,176 L980,330 L20,330 Z" fill="url(#h1)" stroke="currentColor" stroke-width="1.5"/>
+<polygon points="20,167 396,159 396,173 20,183" fill="url(#bd)"/>
+<polygon points="20,158 396,150 396,159 20,167" fill="var(--tile)"/>
+<g stroke="var(--bg)" stroke-width="2"><line x1="70" y1="157" x2="70" y2="166"/><line x1="130" y1="156" x2="130" y2="165"/><line x1="190" y1="154" x2="190" y2="163"/><line x1="250" y1="153" x2="250" y2="162"/><line x1="310" y1="152" x2="310" y2="161"/><line x1="370" y1="150" x2="370" y2="159"/></g>
+<rect x="660" y="159" width="320" height="17" fill="url(#bd)"/>
+<rect x="660" y="150" width="320" height="9" fill="var(--tile)"/>
+<rect x="408" y="236" width="64" height="11" fill="var(--water)"/>
+<rect x="432" y="247" width="16" height="183" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<polyline points="20,183 401,173 407,247 473,247 479,173 648,173 648,154" fill="none" stroke="var(--mem)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M432,249 L436,266 M448,249 L444,266" stroke="var(--mem)" stroke-width="3"/>
+<rect x="398" y="158" width="6" height="18" fill="currentColor"/><rect x="476" y="158" width="6" height="18" fill="currentColor"/>
+<rect x="396" y="150" width="88" height="8" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<g stroke="currentColor" stroke-width="1.5"><line x1="408" y1="150" x2="408" y2="158"/><line x1="420" y1="150" x2="420" y2="158"/><line x1="432" y1="150" x2="432" y2="158"/><line x1="444" y1="150" x2="444" y2="158"/><line x1="456" y1="150" x2="456" y2="158"/><line x1="468" y1="150" x2="468" y2="158"/></g>
+<polyline points="484,182 489,169 643,169 643,150" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="505" y="161" width="14" height="8" fill="currentColor"/><rect x="560" y="161" width="14" height="8" fill="currentColor"/><rect x="615" y="161" width="14" height="8" fill="currentColor"/>
+<rect x="494" y="141" width="144" height="20" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="520" y="135" width="5" height="6" fill="currentColor"/><rect x="580" y="135" width="5" height="6" fill="currentColor"/>
+<rect x="506" y="40" width="58" height="95" fill="var(--glass)" stroke="currentColor" stroke-width="2"/><rect x="568" y="40" width="58" height="95" fill="var(--glass)" stroke="currentColor" stroke-width="2"/>
+<path d="M651,176 L651,152 M651,176 L664,176" fill="none" stroke="currentColor" stroke-width="3"/>
+<rect x="651" y="146" width="9" height="6" rx="2" fill="var(--red)"/>
+<path d="M370,142 L60,148" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+<text x="40" y="128">Deck falls away from grate</text>
+<line x1="300" y1="92" x2="438" y2="148" stroke="currentColor" stroke-width="1"/>
+<text x="150" y="86">Grate ≥ opening width, non-ferrous frame</text>
+<line x1="718" y1="98" x2="656" y2="146" stroke="currentColor" stroke-width="1"/>
+<text x="722" y="96">Waterstop angle + sealant</text>
+<line x1="718" y1="60" x2="630" y2="140" stroke="currentColor" stroke-width="1"/>
+<text x="722" y="58">Sill on packers, fixings sealed</text>
+<line x1="300" y1="366" x2="404" y2="220" stroke="currentColor" stroke-width="1"/>
+<text x="40" y="370">Gutter formed in the slab</text>
+<line x1="334" y1="394" x2="432" y2="300" stroke="currentColor" stroke-width="1"/>
+<text x="40" y="402">Membrane turned into outlet, to stormwater</text>
+<line x1="756" y1="366" x2="600" y2="170" stroke="currentColor" stroke-width="1"/>
+<text x="760" y="370">Sub-sill flashing, cl 2.8.3(a)</text>
+<line x1="530" y1="356" x2="540" y2="175" stroke="var(--mem)" stroke-width="1.2"/>
+<text x="500" y="370" fill="var(--mem)">Membrane under sill, cl 2.8.3(b)</text>
+</svg>
+</div>
+<figcaption>The only standards-based level-threshold detail in Australia, valid for Class 1 and Class 2 under both NCC editions. Fig 2.9 gives <b>no dimensions</b>: gutter width, depth and outlet size come from the hydraulic designer and drain supplier. For Class 2 concrete from May 2027 this gutter must also sit inside a 70 mm structural set-down with a 1:80 slab fall.</figcaption>
+</figure>
+
+<figure style="margin-top:36px">
+<div class="draw">
+<svg viewBox="0 0 1000 400" role="img" aria-label="Section through a set-down slab: external slab 70 mm below the internal slab, membrane laid directly on the slab and turned up the set-down face and under the sill, pavers on pedestals finishing flush with the internal floor, hob with overflow at the outer edge.">
+<defs>
+<pattern id="h2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="var(--conc)"/><line x1="0" y1="0" x2="0" y2="10" stroke="var(--hatch)" stroke-width="1.2"/></pattern>
+<pattern id="bd2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="var(--bed)"/><circle cx="2" cy="3" r=".9" fill="var(--hatch)"/><circle cx="6" cy="6.5" r=".9" fill="var(--hatch)"/></pattern>
+<marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="aw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--mem)"/></marker>
+</defs>
+<text x="20" y="26" class="hd">2 · Set-down slab with a raised, self-draining finish (the NCC 2025 Class 2 geometry)</text>
+<line x1="10" y1="130" x2="990" y2="130" stroke="var(--mute)" stroke-dasharray="4 4" stroke-width="1"/>
+<text x="860" y="122" class="sm">FFL, level both sides</text>
+<path d="M20,162 L56,162 L56,232 L560,220 L560,150 L980,150 L980,300 L20,300 Z" fill="url(#h2)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="0" y="200" width="56" height="12" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="96" y="231" width="16" height="169" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="644" y="139" width="336" height="11" fill="url(#bd2)"/>
+<rect x="644" y="130" width="336" height="9" fill="var(--tile)"/>
+<polyline points="58,164 58,229 557,217 557,147 638,147 638,132" fill="none" stroke="var(--mem)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M96,231 L99,246 M112,231 L109,246" stroke="var(--mem)" stroke-width="3"/>
+<g id="peds" fill="currentColor">
+<rect x="70" y="130" width="90" height="18" fill="var(--tile)"/><rect x="166" y="130" width="90" height="18" fill="var(--tile)"/><rect x="262" y="130" width="90" height="18" fill="var(--tile)"/><rect x="358" y="130" width="90" height="18" fill="var(--tile)"/><rect x="454" y="130" width="92" height="18" fill="var(--tile)"/>
+<rect x="152" y="148" width="28" height="4"/><rect x="163" y="152" width="6" height="72"/><rect x="152" y="221" width="28" height="5"/>
+<rect x="248" y="148" width="28" height="4"/><rect x="259" y="152" width="6" height="70"/><rect x="248" y="219" width="28" height="5"/>
+<rect x="344" y="148" width="28" height="4"/><rect x="355" y="152" width="6" height="68"/><rect x="344" y="217" width="28" height="5"/>
+<rect x="440" y="148" width="28" height="4"/><rect x="451" y="152" width="6" height="65"/><rect x="440" y="214" width="28" height="5"/>
+<rect x="72" y="148" width="24" height="4"/><rect x="81" y="152" width="6" height="75"/><rect x="72" y="224" width="24" height="5"/>
+</g>
+<path class="flow" d="M213,132 L213,206" stroke="var(--mem)" stroke-width="2" fill="none" marker-end="url(#aw2)"/>
+<path class="flow" d="M400,132 L400,202" stroke="var(--mem)" stroke-width="2" fill="none" marker-end="url(#aw2)"/>
+<path d="M520,212 L130,222" stroke="var(--mem)" stroke-width="1.6" fill="none" marker-end="url(#aw2)"/>
+<polyline points="566,154 566,146 636,146 636,128" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="572" y="138" width="10" height="8" fill="currentColor"/><rect x="620" y="138" width="10" height="8" fill="currentColor"/>
+<rect x="566" y="120" width="70" height="18" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="572" y="36" width="58" height="84" fill="var(--glass)" stroke="currentColor" stroke-width="2"/>
+<polyline points="641,150 641,132" fill="none" stroke="currentColor" stroke-width="3"/>
+<rect x="641" y="126" width="9" height="6" rx="2" fill="var(--red)"/>
+<line x1="590" y1="160" x2="590" y2="218" stroke="currentColor" stroke-width="1" marker-start="url(#ar2)" marker-end="url(#ar2)"/>
+<line x1="300" y1="76" x2="300" y2="128" stroke="currentColor" stroke-width="1"/>
+<text x="70" y="70">Pavers on pedestals, open joints = self-draining</text>
+<line x1="470" y1="104" x2="552" y2="128" stroke="currentColor" stroke-width="1"/>
+<text x="330" y="102">10–12 mm gap to sill</text>
+<line x1="718" y1="88" x2="645" y2="128" stroke="currentColor" stroke-width="1"/>
+<text x="722" y="86">Waterstop + sealant, sub-sill over membrane</text>
+<line x1="610" y1="342" x2="592" y2="190" stroke="currentColor" stroke-width="1"/>
+<text x="600" y="346">≥70 mm structural set-down at the door</text>
+<line x1="380" y1="334" x2="380" y2="216" stroke="var(--mem)" stroke-width="1.2"/>
+<text x="330" y="346" fill="var(--mem)">Membrane direct on slab, falls ≥1:80</text>
+<line x1="60" y1="366" x2="40" y2="212" stroke="currentColor" stroke-width="1"/>
+<text x="64" y="378">Hob ≥70 mm, overflow invert ≥20 mm below internal slab</text>
+<line x1="130" y1="334" x2="106" y2="300" stroke="currentColor" stroke-width="1"/>
+<text x="134" y="346">Outlet at membrane level</text>
+</svg>
+</div>
+<figcaption>The build-up NCC 2025 steers Class 2 concrete towards (F1D4, F1D7(2), F1D10). Add the fall to the set-down: 1:80 over a 2.4 m-deep balcony adds 30 mm at the outer edge. Water reaches the membrane at the door line, so the membrane turned up the set-down face and under the sill does the work. Document it as the cl 2.8.3(b) route, or add a door-line gutter as in drawing 1, and have the façade engineer declare it. New Zealand details (BRANZ BU583, Viking Buzon BZ03) keep a 100 mm structural step even with a flush finish.</figcaption>
+</figure>
+
+<figure style="margin-top:36px">
+<div class="draw">
+<svg viewBox="0 0 1000 400" role="img" aria-label="Section through a proprietary threshold drain: a local rebate in the slab at the door, membrane completed first and dressed into the drain flange, drain tray and grate in front of the door track, track and sub-sill on packers above the membrane.">
+<defs>
+<pattern id="h3" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="var(--conc)"/><line x1="0" y1="0" x2="0" y2="10" stroke="var(--hatch)" stroke-width="1.2"/></pattern>
+<pattern id="bd3" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="var(--bed)"/><circle cx="2" cy="3" r=".9" fill="var(--hatch)"/><circle cx="6" cy="6.5" r=".9" fill="var(--hatch)"/></pattern>
+<marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+</defs>
+<text x="20" y="26" class="hd">3 · Proprietary threshold drain under or in front of the door track (Stormtech TDi / TDiS type)</text>
+<line x1="10" y1="130" x2="990" y2="130" stroke="var(--mute)" stroke-dasharray="4 4" stroke-width="1"/>
+<text x="860" y="122" class="sm">FFL, level both sides</text>
+<path d="M20,168 L380,160 L380,240 L660,240 L660,160 L980,160 L980,300 L20,300 Z" fill="url(#h3)" stroke="currentColor" stroke-width="1.5"/>
+<polygon points="20,146 376,138 376,157 20,165" fill="url(#bd3)"/>
+<polygon points="20,137 376,130 376,138 20,146" fill="var(--tile)"/>
+<rect x="666" y="139" width="314" height="21" fill="url(#bd3)"/>
+<rect x="666" y="130" width="314" height="9" fill="var(--tile)"/>
+<rect x="386" y="192" width="270" height="44" fill="url(#bd3)"/>
+<rect x="476" y="148" width="174" height="44" fill="url(#bd3)"/>
+<polyline points="20,165 383,157 383,237 657,237 657,136" fill="none" stroke="var(--mem)" stroke-width="4" stroke-linejoin="round"/>
+<rect x="410" y="234" width="46" height="6" fill="currentColor"/>
+<rect x="425" y="192" width="16" height="208" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<path d="M392,134 L392,190 L470,190 L470,134" fill="var(--bg)" stroke="currentColor" stroke-width="2"/>
+<rect x="394" y="178" width="74" height="10" fill="var(--water)"/>
+<rect x="390" y="130" width="82" height="6" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>
+<g stroke="currentColor" stroke-width="1.3"><line x1="402" y1="130" x2="402" y2="136"/><line x1="414" y1="130" x2="414" y2="136"/><line x1="426" y1="130" x2="426" y2="136"/><line x1="438" y1="130" x2="438" y2="136"/><line x1="450" y1="130" x2="450" y2="136"/><line x1="462" y1="130" x2="462" y2="136"/></g>
+<rect x="470" y="140" width="4" height="40" fill="var(--red)"/>
+<polyline points="474,142 474,148 650,148 650,128" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="490" y="148" width="12" height="8" fill="currentColor"/><rect x="556" y="148" width="12" height="8" fill="currentColor"/><rect x="622" y="148" width="12" height="8" fill="currentColor"/>
+<rect x="478" y="122" width="168" height="20" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="490" y="36" width="70" height="86" fill="var(--glass)" stroke="currentColor" stroke-width="2"/><rect x="566" y="36" width="70" height="86" fill="var(--glass)" stroke="currentColor" stroke-width="2"/>
+<circle cx="660" cy="134" r="3.5" fill="var(--mute)"/><rect x="655" y="126" width="10" height="5" rx="2" fill="var(--red)"/>
+<line x1="300" y1="80" x2="430" y2="128" stroke="currentColor" stroke-width="1"/>
+<text x="80" y="76">Grate + drain tray (tray 23–53 mm)</text>
+<line x1="300" y1="106" x2="469" y2="150" stroke="currentColor" stroke-width="1"/>
+<text x="80" y="104">≥2 mm nylon between alu and stainless</text>
+<line x1="718" y1="74" x2="646" y2="124" stroke="currentColor" stroke-width="1"/>
+<text x="722" y="72">Track / sub-sill on packers</text>
+<line x1="718" y1="102" x2="662" y2="130" stroke="currentColor" stroke-width="1"/>
+<text x="722" y="100">Caulking + backing rod</text>
+<line x1="350" y1="338" x2="433" y2="300" stroke="currentColor" stroke-width="1"/>
+<text x="40" y="344">Primary outlet (+ separate overflow on 100TDiS)</text>
+<line x1="345" y1="368" x2="398" y2="238" stroke="var(--mem)" stroke-width="1.2"/>
+<text x="40" y="376" fill="var(--mem)">Membrane done first, dressed to drain flange</text>
+<line x1="600" y1="334" x2="600" y2="240" stroke="currentColor" stroke-width="1"/>
+<text x="560" y="348">Local slab rebate ≈55–120 mm below FFL</text>
+<line x1="718" y1="46" x2="659" y2="150" stroke="var(--mem)" stroke-width="1.2"/>
+<text x="722" y="44" fill="var(--mem)">Membrane up rebate face to FFL</text>
+</svg>
+</div>
+<figcaption>Effectively a factory-made Fig 2.9 gutter. Stormtech: "waterproofing must be completed first"; minimum track depth 30 mm (100 mm grate) or 35 mm (65 mm grate); channel length at least the door track length + 6 mm; overall depth up to 120 mm. The 55–120 mm rebate is the sum of published component depths, not a figure any maker publishes. Stormtech's claim that a "min 50 mm stepdown within the channel" meets the NCC is a manufacturer claim; certifier acceptance is unverified. Alternatives: AWS FlowTHRU / FlowTHRU Pro (depths behind a login) and Aquabocci R-47 Low Profile (EPDM sleeve under the track, aimed at fully covered balconies).</figcaption>
+</figure>
+<p class="legend"><span><svg width="26" height="8" aria-hidden="true"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--mem)" stroke-width="4"/></svg> membrane</span><span><svg width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="var(--conc)" stroke="var(--hatch)"/></svg> concrete</span><span><svg width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="var(--bed)" stroke="var(--hatch)"/></svg> bed / screed</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="2" fill="var(--red)"/></svg> sealant / separation</span></p>
+</div></section>
+
+<section class="band" id="codes" style="background:var(--panel)"><div class="wrap">
+<h2>NCC 2022 governs until 1 May 2027, and it sets no numbers of its own</h2>
+<div class="two">
+<div>
+<p>The NSW Government says the current edition is <b>NCC 2022 Amendment 2</b> (from 29 July 2025), and NSW adopts <b>NCC 2025 on 1 May 2027</b>. The ABCB published NCC 2025 on 1 May 2026 and lists the NSW transition as "N/A"; the NSW release calls the year a "12-month transition period". Confirm the assessed edition with your certifier on any job that straddles the date. NSW makes no variation to the external waterproofing clauses. Its one announced NCC 2025 waterproofing variation lets owners doing <i>remedial</i> work on existing apartments choose either edition.</p>
+<p><b>Class 2 (Volume One).</b> F1P2: water from a 1% AEP storm "must not enter the building". F3P1: roofs and walls, "including openings around windows and doors", must prevent damaging water penetration. F1D5: a "roof, balcony, podium or similar horizontal surface" membrane to AS 4654.1 materials, designed and installed to AS 4654.2. F1D4: exposed joints per AS 4654.2 Section 2.9. F1D2 exempts timber or perforated decking and balconies directly above ground. D3D16(d) actually <i>allows</i> a sill up to 190 mm onto a balcony, which Building Commission NSW calls "a concession intended for weatherproofing".</p>
+<p><b>Class 1 (Volume Two).</b> H2P2 is the Performance Requirement. H2D8 calls up AS 4654.1/.2 for balconies "located above internal spaces", but excludes "a concrete slab that has a minimum step-down of 50 mm below the internal floor level" and spaced decking. So a <b>level-threshold concrete balcony over a habitable room gets no exclusion and must meet AS 4654.2 in full</b>. This is a literal reading; confirm it with your certifier. Glazed doors to AS 2047 under H1D8. H2D8 and H2P2 are word-for-word the same in NCC 2025.</p>
+<p>Any departure from AS 4654.2 is a <b>Performance Solution</b> (NSW A2G2). No Verification Method covers balcony membranes, so it rests on Expert Judgement or comparison with the DTS.</p>
+</div>
+<div>
+<h3 style="margin-top:0">NCC 2025 for Class 2–9 concrete balconies, from 1 May 2027</h3>
+<ul class="tight">
+<li><b>F1D4(b):</b> structural substrate "graded with a minimum fall of 1:80".</li>
+<li><b>F1D4(c):</b> "a minimum 70 mm step down" from the internal floor structural substrate to the adjacent external structural substrate, "where applicable".</li>
+<li><b>F1D4(d):</b> a monolithic hob integral with the slab, "at least 70 mm high", at the outer perimeter, unless the edge drains to a gutter.</li>
+<li><b>F1D4 note:</b> overflow invert "not less than 20 mm below" the adjacent internal floor structural substrate. A tile bed, screed or topping "is not considered a structural substrate". The 70 mm is not the AS 4654.2 termination height, which "may require … a step down greater than 70 mm".</li>
+<li><b>F1D7(2):</b> membrane directly on the structural substrate. <b>F1D10:</b> finishes self-draining or directly fixed to the membrane. <b>F1D6:</b> exposed joints at the high point. <b>F1D14:</b> AS 2047 doors.</li>
+</ul>
+<p>A flush <i>finished</i> threshold still passes, over a slab set down at least 70 mm. What disappears is the level slab with falls and the step made in screed. HIA reads it the same way. The ABCB flags the access clash: D4D2 "may prevent gradients steeper than 1:40".</p>
+</div>
+</div>
+<div class="scroll" style="margin-top:18px">
+<table class="stack">
+<thead><tr><th></th><th>Class 1 house (Vol Two)</th><th>Class 2 apartment (Vol One)</th></tr></thead>
+<tbody>
+<tr><td><b>NCC 2022, in force now</b></td><td>H2P2; H2D8 → AS 4654.1/.2 for balconies above internal spaces; ≥50 mm concrete step-down and spaced decking excluded; AS 2047 via H1D8</td><td>F1P2 (1% AEP), F3P1; F1D5 → AS 4654.1/.2; F1D4 joints; F3D4 AS 2047; no NCC figures for falls, step, hob or overflow</td></tr>
+<tr><td><b>NCC 2025, NSW from 1 May 2027</b></td><td>No change: H2D8 and H2P2 identical</td><td>Concrete: 1:80 structural fall, ≥70 mm structural step-down, ≥70 mm integral hob, overflow invert ≥20 mm below internal slab; membrane on slab; self-draining or direct-fixed finish; AS 2047</td></tr>
+</tbody></table>
+</div>
+<p class="src">Sources: <a href="https://ncc.abcb.gov.au/editions/ncc-2022/adopted/volume-one/f-health-and-amenity/part-f1-surface-water-management-rising-damp-and-external-waterproofing">NCC 2022 Vol One F1</a> · <a href="https://ncc.abcb.gov.au/editions/ncc-2022/adopted/volume-two/h-class-1-and-10-buildings/part-h2-damp-and-weatherproofing">NCC 2022 Vol Two H2</a> · <a href="https://ncc.abcb.gov.au/editions/ncc-2025/adopted/volume-one/f-health-and-amenity/part-f1-water-management">NCC 2025 Vol One F1</a> · <a href="https://ncc.abcb.gov.au/ncc-2025/ncc-2025-state-and-territory-adoption-information">ABCB adoption</a> · <a href="https://www.nsw.gov.au/ministerial-releases/nsw-to-adopt-new-national-construction-code-may-2027">NSW release</a> · <a href="https://www.nsw.gov.au/departments-and-agencies/building-commission/industry-changes">Building Commission NSW industry changes</a> · <a href="https://hia.com.au/resources-and-advice/building-it-right/australian-standards/articles/planning-for-waterproofing-of-concrete-balconies">HIA</a></p>
+</div></section>
+
+<section class="band" id="as4654"><div class="wrap">
+<h2>AS 4654.2 allows a flush door through one binding sentence</h2>
+<div class="two">
+<div>
+<p>The standard is paywalled. Clause wording here was checked against two licensed public reproductions: the QBCC Technical Feature (Feb 2017) and Building Commission NSW's Building Defects Library (v1.1, June 2025). No amendment has been issued. "Shall" text binds on the DTS route. Notes and informative appendices are "only for information and guidance".</p>
+<p><b>Termination height is a performance rule.</b> Cl 2.8.1.1: the membrane height above the <b>finished surface level</b> "shall be sufficient to prevent water, including wind driven, flowing over the top". The numbers are only in informative Appendix A, Table A1, measured above the <i>external</i> tile. Building Commission NSW: "The height of membrane termination should be determined by the façade engineer". At a flush door those heights would have to rise above the internal floor, so <b>a level threshold cannot comply by upturn height; it has to use cl 2.8.3(b)</b>.</p>
+<p><b>Cl 2.8.3, the level-threshold rule:</b> "(a) Sub-sill flashing shall be included as part of the membrane system" and "(b) Where the internal and external finished floor levels do not allow an upturn, the membranes shall be fixed under the sill and terminate in the stormwater system". Notes: the deck "should fall away from the grate" and the grate be "to the width of or greater than the opening" (3); openings "should be provided with a set-down or hob" (5); where that isn't possible, e.g. wheelchair access, "a gutter should be formed into the substrate immediately in front of the opening" (6); AS 2047 governs fixings to seals and frames (7).</p>
+<p>The gutter is a "should", but it is the only way the standard shows to "terminate in the stormwater system" at a door. QBCC calls level balconies "not prohibited" but "more problematic to construct and achieve compliance". <b>A flush door that relies only on the deck falling away, with no drained gutter, needs a Performance Solution.</b> Fig 2.8 (Options 1–3) is a step-down detail, not a level one.</p>
+</div>
+<div>
+<table>
+<thead><tr><th>Wind class</th><th class="n">ULS speed</th><th class="n">Table A1 upturn</th></tr></thead>
+<tbody>
+<tr><td>N1</td><td class="n">34 m/s</td><td class="n">40 mm</td></tr>
+<tr><td>N2</td><td class="n">40 m/s</td><td class="n">50 mm</td></tr>
+<tr><td>N3 / C1</td><td class="n">50 m/s</td><td class="n">70 mm</td></tr>
+<tr><td>N4 / C2</td><td class="n">61 m/s</td><td class="n">100 mm</td></tr>
+<tr><td>N5 / C3</td><td class="n">74 m/s</td><td class="n">150 mm</td></tr>
+<tr><td>N6 / C4</td><td class="n">86 m/s</td><td class="n">180 mm</td></tr>
+</tbody></table>
+<p class="src">Informative. Measured above the external finished level. Where retention is designed in, the upturn goes above the overflow level instead (App A(b)).</p>
+<h3>Other clauses that bind</h3>
+<ul class="tight">
+<li><b>Falls, cl 2.5.2:</b> no retained water except surface-tension residue; fall in the structural substrate or a screed over it. "No flatter than 1 in 100" is a note; certifiers treat it as the minimum.</li>
+<li><b>Drains, cl 2.10:</b> membrane connected by turn-down or flange/clamping ring; drain has a sump, pit, grate or cage; notes call for a variable-level inlet draining "at the membrane level".</li>
+<li><b>Overflows, cl 2.11:</b> membrane turned into the overflow; finished floor must not reduce outlet flow. No overflow height or outlet count is set.</li>
+<li><b>Build-up:</b> fillets at every change of plane (notes: 15 × 15 mm liquid, 40 × 40 mm sheet), cl 2.7; bond breakers where movement is expected, cl 2.12; unbonded 100 mm over joints, cl 2.9; bonded beds jointed (ideally 10 mm at 4.5 m), unbonded toppings ≥50 mm on a double slip sheet (note), cl 2.15.2; penetrating fixings sealed, cl 2.8.4.</li>
+<li><b>Testing, cl 2.16:</b> inspection or acceptance testing on completion; note suggests dry-film thickness or a ≥24 h controlled water test.</li>
+<li><b>Materials:</b> AS 4654.1, movement Class I (&lt;60% elongation), II (60–299%) or III (≥300%).</li>
+</ul>
+<p class="src">Revision: DR AS/NZS 4858:2026 (membranes for wet areas and external use) is open for comment until 30 Nov 2026. A DR AS 4654.2:2026 was reported open 10 Sep–12 Nov 2026 (not verified). Neither changes anything until an NCC edition calls it up; NCC 2025 cites AS 4654.2-2012. Sources: <a href="https://store.standards.org.au/product/as-4654-2-2012">Standards store</a> · <a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC 2017</a> · <a href="https://www.nsw.gov.au/sites/default/files/2025-06/building-defects-library.pdf.pdf">Building Defects Library v1.1</a> · <a href="https://www.wa.gov.au/system/files/2024-10/ib_037_waterproofing_external_above_ground_building_elements.pdf">WA IB 037</a></p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="door" style="background:var(--panel)"><div class="wrap">
+<h2>The door, the drains and the tiles each have their own test</h2>
+<div class="two">
+<div>
+<p><b>AS 2047 is a second, independent check.</b> Framed sliding, swinging, French and bi-fold glazed doors need an AS 2047 water-penetration rating (Class 2: F3D4, F1D14 from 2027; Class 1: H1D8). Frameless and one-off site-built doors are excluded. The test is 30% of the positive SLS wind pressure, minimum 150 Pa. At about 0.1 mm of water head per Pa, that is roughly 15 mm at 150 Pa, 31 mm at 300 Pa and 61 mm at 600 Pa. That is why flush sills need drained or compressed-seal designs.</p>
+<p>Published flush-sill ratings: AWS SlideMASTER recessed sill (Series 703) "Maximum Water 600Pa" with floating self-draining tiles over the track; Alspec ProGlide UltraFlat "630Pa" with an AS 1428.1 sill. Alspec itself warns sills that comply with AS 1428.1 "may not meet the minimum Water Penetration Resistance in AS2047". Passing AS 2047 does not satisfy the AS 4654.2 sill and waterstop rules. Check the <b>label</b> on the sill configuration actually installed.</p>
+<p><b>AS/NZS 3500.3</b> sizes the drains (NCC F1D3). The 2018 edition (cl 3.8) designs balcony drainage for a 20-year ARI (5% AEP) and overflow for a 100-year ARI (1% AEP); which edition NSW now calls up was not verified. No standard sets a minimum number of outlets, but a 2024 NSW rectification order treated "Only one overflow pipe … for the 240 sqm balcony" as a serious defect. Do not treat the door gutter as the overflow: give enclosed balconies an independent overflow below door level.</p>
+<p><b>Tiling:</b> AS 3958:2023 (Amd 1:2024) replaced AS 3958.1-2007; external movement joints at about 4.5 m where a dimension exceeds 4.5 m (2007 numbering). No reliable AS 3958 external fall figure was found. AS 3740 matters only if the room inside is a wet area.</p>
+</div>
+<div>
+<table>
+<thead><tr><th>Window/door rating</th><th class="n">Non-exposed</th><th class="n">Exposed</th></tr></thead>
+<tbody>
+<tr><td>N1, N2</td><td class="n">150 Pa</td><td class="n">200 Pa</td></tr>
+<tr><td>N3, C1</td><td class="n">150 Pa</td><td class="n">300 Pa</td></tr>
+<tr><td>N4, C2</td><td class="n">200 Pa</td><td class="n">300 Pa</td></tr>
+<tr><td>N5, C3</td><td class="n">300 Pa</td><td class="n">450 Pa</td></tr>
+<tr><td>N6, C4</td><td class="n">450 Pa</td><td class="n">600 Pa</td></tr>
+</tbody></table>
+<p class="src">AS 2047 Table 2.3 as reproduced by <a href="https://www.agwa.com.au/common/Uploaded%20files/AGWA/Technical/AGWA%20Guides/AGWA-Guide-Selection.pdf">AGWA</a>. Also: <a href="https://www.agwa.com.au/common/Uploaded%20files/AGWA/Technical/AGWA%20Guides/AGWA%20Compliance%20Guide%20V1%20FINAL.pdf">AGWA compliance guide</a> · <a href="https://www.specifyaws.com.au/cdn/lhjUiWS3K4Cy/703-productsheet.pdf">AWS 703</a> · <a href="https://alspec.com.au/_assets/products/brochures/ProGlide-UltraFlat-Brochure.pdf">Alspec ProGlide UltraFlat</a> · <a href="https://alspec.com.au/wp-content/uploads/2024/01/2020-alspec-over-the-threshold-whitepaper-3.pdf">Alspec whitepaper</a> · <a href="https://www.bpc.vic.gov.au/resource-hub/practice-notes/SD-02-balcony-design-and-stormwater-drainage">BPC SD-02</a> · <a href="https://www.nsw.gov.au/sites/default/files/noindex/2024-07/building-work-rectification-order-41-yattenden-cres-baulkham-hills.pdf">Yattenden Cres order</a></p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="access"><div class="wrap">
+<h2>Councils, not the NCC, push NSW balcony doors to level</h2>
+<div class="two">
+<div>
+<p><b>NSW has opted out of the NCC livable housing provisions.</b> Part H8 (Class 1a) and Part G7 (Class 2 units) "have deliberately been left blank" in both NCC 2022 and NCC 2025. Even where H8 applies it targets one step-free entrance, not balcony doors. The Apartment Design Guide's 20% Livable Housing Silver benchmark (Objective 4Q-1) is planning guidance since SEPP 65 moved into the Housing SEPP. Silver covers the entrance (5 mm, or a ramped threshold under 56 mm; "grated drain along threshold" advised), not balconies.</p>
+<p><b>The binding drivers are council DCPs and the access reports</b> that become consent documents. Many councils require 10–25% of units to be adaptable to <b>AS 4299</b>: "Maximum 3mm vertical step or a 5mm bevelled step at entry". Examples written into consents:</p>
+<ul class="tight">
+<li>Lane Cove: "All balcony levels to all the adaptable units will have a 10mm step down", threshold ramps, 1:40 balcony fall.</li>
+<li>A Sydney SSD project: "maximum step downs of 35mm".</li>
+<li>Blacktown: "35mm threshold ramp and balcony to be sloped at max. 1:40 to achieve 100mm drop at the end".</li>
+</ul>
+<p>Class 2 common-area terraces and podiums are governed by NCC Part D4 and AS 1428.1 as law (threshold or step ramp under D3D16(c)). The NCC access provisions don't apply inside units.</p>
+</div>
+<div>
+<table>
+<thead><tr><th>Item</th><th class="n">Limit</th></tr></thead>
+<tbody>
+<tr><td style="white-space:normal">Level transition (AS 1428.1 / AS 4299 entry)</td><td class="n">3 mm, or 5 mm bevelled</td></tr>
+<tr><td style="white-space:normal">Threshold ramp (AS 1428.1)</td><td class="n">35 mm rise, 280 mm, 1:8</td></tr>
+<tr><td style="white-space:normal">Step ramp (AS 1428.1)</td><td class="n">190 mm rise, 1:10</td></tr>
+<tr><td style="white-space:normal">Livable Housing Silver entrance</td><td class="n">5 mm; ramp &lt;56 mm</td></tr>
+<tr><td style="white-space:normal">Grate openings on an accessible route</td><td class="n">≤13 mm</td></tr>
+<tr><td style="white-space:normal">Sill onto a balcony, NCC D3D16(d)</td><td class="n">up to 190 mm</td></tr>
+<tr><td style="white-space:normal">Fall on an accessible path</td><td class="n">≤1:40</td></tr>
+</tbody></table>
+<div class="panel" style="margin-top:16px"><p>In practice the accessible envelope is 0–5 mm, or up to 35 mm with a 1:8 threshold ramp, plus a fall away from the door no steeper than 1:40. That envelope is why the cl 2.8.3(b) under-sill route with a door-line gutter becomes the default. A small threshold ramp plus a 1:40 fall, as at Blacktown, recovers freeboard quickly without a visible step.</p></div>
+<p class="src" style="margin-top:12px">Sources: <a href="https://ncc.abcb.gov.au/editions/ncc-2022/adopted/volume-two/5-new-south-wales/h8-livable-housing-design">NCC NSW H8</a> · <a href="https://www.planning.nsw.gov.au/sites/default/files/2023-03/apartment-design-guide-part-4-designing-the-building.pdf">ADG Part 4</a> · <a href="https://accessarchitects.com.au/vista-access-architects-blog/is-the-20-livable-housing-silver-level-requirement-still-mandatory-for-nsw-apartment-developments">Vista Access</a> · <a href="https://universaldesignaustralia.net.au/wp-content/uploads/2017/08/lhaguidlineseditionno4-2017.pdf">LHDG 4th ed.</a> · <a href="https://www.emaa.com.au/uploads/4/6/3/2/46326229/2020_draft_information_sheet_for_adaptable_housing.pdf">EMAA AS 4299</a> · <a href="https://www.agwa.com.au/common/Uploaded%20files/AGWA/Technical/AGWA%20Guides/AS1428%20Access%20and%20Mobility%20Guide%20V2.pdf">AGWA AS 1428.1</a> · <a href="https://www.blacktown.nsw.gov.au/files/assets/public/v/1/planning-neighbour-notifications/spp-20-00003/access-report-1-zoe-place-mount-druitt.pdf">Blacktown report</a></p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="nsw-law" style="background:var(--panel)"><div class="wrap">
+<h2>NSW law adds declarations and enforcement, but no balcony inspection</h2>
+<div class="two">
+<div>
+<p><b>Class 2 (and Class 3, 9c since July 2023): regulated designs.</b> Waterproofing is a building element under s 6(1) of the Design and Building Practitioners Act 2020. Balcony waterproofing needs a regulated design and a design compliance declaration ("W") from a registered design practitioner before the CC, and a building compliance declaration before the OC application. The regulator's minimum: plans showing membrane areas, "balcony/roof gradients" and "Location of floor wastes/overflow"; sections showing membrane extent, "Termination of waterproofing membrane" and "Overflow details" at 1:50 with 1:20, 1:10 or 1:5 details. Door flashings and sill heights sit in the building-enclosure design, set-down and falls in the structural and architectural setout. <b>A level threshold is where those three designs must agree.</b> There is no separate waterproofing practitioner class.</p>
+<p><b>The RAB Act has already been used on this detail.</b> The July 2024 Baulkham Hills order listed "no visible overflow provisions", "Water ponding as evidence of inadequate falls" and "the absence of adequate drainage system at the door to prevent water entering the building" as serious defects. In <i>The Owners – SP 92226 v 1A Eden</i> [2026] NSWSC 563, leaks from "a lack of a barrier underneath the balcony doors and inadequate overflow sizes" produced a $2.5 m judgment; with the developer in liquidation the estimated dividend was $308,406 and owners raised a $4.5 m levy.</p>
+</div>
+<div>
+<ul class="tight">
+<li><b>Licensing:</b> waterproofing is trade work needing a contractor licence above <b>$5,000</b> (labour and materials, incl. GST). The stormwater connection of a door gutter is drainage work: specialist work, licensed at any value.</li>
+<li><b>Warranties:</b> waterproofing is a "major element". A leak is a 6-year major defect only if it meets the s 18E consequences test; otherwise 2 years (<i>Ashton v Stevenson</i>).</li>
+<li><b>Inspections:</b> mandatory critical stage inspections (DCFS Regulation 2021 s 61) cover waterproofing "in a wet area" only, plus stormwater connections before covering. <b>No mandatory stage covers an external balcony membrane</b>, so set your own hold point.</li>
+<li><b>Reforms:</b> the Building (Approvals and Practitioners) Act 2026 (assent 14 Aug 2026, not yet proclaimed) will replace CCs and OCs with building and completion approvals and repeal the DBP Act. From 1 Dec 2026 new apartment buildings of more than two units move to a strata bond or decennial liability insurance (start not re-confirmed after 12 Nov 2026).</li>
+</ul>
+<p class="src">Sources: <a href="https://nswdfsi-web.squiz.cloud/__data/assets/pdf_file/0010/1120501/Design-practitioners-handbook-final.pdf">Design Practitioners' Handbook</a> · <a href="https://www.nsw.gov.au/departments-and-agencies/building-commission/about-us/building-defect-complaints">Building Commission NSW</a> · <a href="https://www.lexology.com/library/detail.aspx?g=d26bc6b2-af17-4edb-be0d-4106866ccbbe">1A Eden commentary</a> · <a href="https://www.fairtrading.nsw.gov.au/trades-and-businesses/licensing-and-qualifications/licence-classes-and-qualifications/plumbing,-draining-and-gasfitting">Fair Trading</a> · <a href="https://www.bartier.com.au/insights/articles/ncat-update-what-is-a-major-defect">Bartier Perry</a> · <a href="https://legislation.nsw.gov.au/view/whole/html/inforce/current/sl-2021-0689">DCFS Reg s 61</a> · <a href="https://www.swaab.com.au/publication/nsw-building-approvals-and-practitioners-bill-2026-passes-parliament">Swaab</a></p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="checklist"><div class="wrap">
+<h2>Builder's checklist: the "shall" kept apart from the "should"</h2>
+<p class="legend"><span><b class="t m">Mandatory</b> law or NCC Performance Requirement</span><span><b class="t d">DTS</b> NCC DTS or AS "shall"; binding on the DTS route</span><span><b class="t y">2027</b> NCC 2025 DTS from 1 May 2027</span><span><b class="t i">Informative</b> AS note or appendix</span><span><b class="t g">Guidance</b> regulator or industry</span><span><b class="t x">Maker</b> product instruction or claim</span><span><b class="t c">Consent</b> binding once in a DA or access report</span></p>
+
+<h3>Falls</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t d">DTS</b></td><td>Surface drains with no retained water except surface tension; fall in the structural substrate or a screed over it</td><td>C1, C2 now</td><td>AS 4654.2 cl 2.5.2</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Fall no flatter than 1:100; certifiers treat it as the minimum</td><td>C1, C2 now</td><td>cl 2.5.2 note</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Deck falls away from the door and grate (drawn in every regulator level detail)</td><td>All</td><td>cl 2.8.3 note 3; Fig 2.9; NSW 14.06B</td></tr>
+<tr><td><b class="t y">2027</b></td><td>≥1:80 fall in the structural concrete; screed or tile bed doesn't count</td><td>C2–9 concrete</td><td>NCC 2025 F1D4(b)</td></tr>
+<tr><td><b class="t c">Consent</b></td><td>No steeper than 1:40 on an accessible path or where the access report says so</td><td>Accessible routes, adaptable units</td><td>D4; access reports</td></tr>
+</tbody></table></div>
+
+<h3>Membrane termination, sill, sub-sill and waterstop</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t d">DTS</b></td><td>Termination above the external finished surface high enough to stop wind-driven water</td><td>All</td><td>cl 2.8.1.1</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Table A1 heights 40–180 mm by wind class; façade engineer sets the height; cannot be met at a flush door</td><td>Step-down doors</td><td>App A; Defects Library</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Sub-sill flashing included as part of the membrane system</td><td>Every door onto a waterproofed area</td><td>cl 2.8.3(a)</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>No room for an upturn: membrane fixed under the sill and terminated into the stormwater system</td><td>Flush doors</td><td>cl 2.8.3(b)</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Waterstop angle at the inner edge of the sill, returned at the jambs; flexible sealant to the internal floor</td><td>All</td><td>Figs 2.8, 2.9; AGWA</td></tr>
+<tr><td><b class="t x">Maker</b></td><td>Sub-sill installed before the door; seal sill, packer and membrane before drilling</td><td>All</td><td>Fig 2.8 opt 2; Ardex D69</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Every fixing through the membrane sealed</td><td>All</td><td>cl 2.8.4</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Fillet at each change of plane (15 × 15 liquid, 40 × 40 sheet are notes); bond breaker where movement expected</td><td>All</td><td>cl 2.7, 2.12</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>≥10 mm gap between sub-sill and tiles</td><td>All</td><td>Fig 2.8; Multiplex 17223</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Membrane to AS 4654.1 with a movement class suited to slab, frame and channel movement</td><td>All</td><td>cl 1.6, 2.3</td></tr>
+</tbody></table></div>
+
+<h3>Grated gutter at the door</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t i">Informative</b></td><td>No set-down or hob possible: gutter formed in the substrate immediately in front of the opening. Leaving it out means a Performance Solution</td><td>Flush doors</td><td>cl 2.8.3 note 6; QBCC; WA IB 037</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Grate at least the full opening width, non-ferrous frame, removable</td><td>Flush doors</td><td>note 3; Fig 2.9</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Gutter drained to stormwater; membrane turned down into the outlet or clamped; sump, pit, grate or cage</td><td>Flush doors</td><td>cl 2.10</td></tr>
+<tr><td><b class="t x">Maker</b></td><td>Gutter size not in AS 4654.2: get it from the supplier and hydraulic designer. Stormtech channel ≥ track length + 6 mm</td><td>Flush doors</td><td>Stormtech order form</td></tr>
+<tr><td><b class="t m">Mandatory</b></td><td>Grate openings ≤13 mm, slots not in the direction of travel, where AS 1428.1 applies</td><td>Accessible routes</td><td>AS 1428.1 via Alspec</td></tr>
+<tr><td><b class="t x">Maker</b></td><td>≥2 mm nylon separation between aluminium sill and stainless drain</td><td>Threshold drains</td><td>Stormtech TDi</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>Written sign-off from the membrane maker for the membrane-to-drain-flange joint</td><td>Flush doors</td><td>Ardex D55</td></tr>
+</tbody></table></div>
+
+<h3>Set-down depths</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t d">DTS</b></td><td>No minimum set-down for houses; a ≥50 mm concrete step-down only takes a balcony outside H2D8 (confirm reading)</td><td>C1, 2022 and 2025</td><td>H2D8</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>"Openings should be provided with a set-down or hob"</td><td>C2 now</td><td>cl 2.8.3 note 5</td></tr>
+<tr><td><b class="t y">2027</b></td><td>≥70 mm structural step-down, internal slab to adjacent external slab; more if AS 4654.2 needs it</td><td>C2–9 concrete</td><td>F1D4(c)</td></tr>
+<tr><td><b class="t y">2027</b></td><td>≥70 mm monolithic perimeter hob unless the edge drains to a gutter</td><td>C2–9 concrete</td><td>F1D4(d)</td></tr>
+<tr><td><b class="t y">2027</b></td><td>Membrane directly on the structural slab; finish self-draining or directly fixed</td><td>C2–9</td><td>F1D7(2), F1D10</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>Add the fall: 1:80 over 2.4 m = +30 mm; 1:100 over 2 m = +20 mm</td><td>All</td><td>Arithmetic</td></tr>
+<tr><td><b class="t x">Maker</b></td><td>Stormtech track ≥30/35 mm + tray 23–53 mm, overall ≤120 mm; Buzon pedestal 12–18 mm (26–32 with corrector) + paver; unbonded screed ≥50 mm</td><td>Design input</td><td>Stormtech; Buzon; cl 2.15.2</td></tr>
+</tbody></table></div>
+
+<h3>Drainage and overflows</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t d">DTS</b></td><td>Stormwater drainage to AS/NZS 3500.3: drainage 20-yr ARI (5% AEP), overflow 100-yr ARI (1% AEP)</td><td>All</td><td>F1D3; 3500.3:2018 cl 3.8</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Membrane connected into every outlet and turned into the overflow; finish must not reduce outlet flow</td><td>All</td><td>cl 2.10, 2.11</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Variable-level inlet so water under the tiles drains at membrane level</td><td>Tiled and pedestal finishes</td><td>cl 2.10 notes</td></tr>
+<tr><td><b class="t i">Informative</b></td><td>Overflow discharges away from the building, where a blockage will be seen</td><td>All</td><td>cl 2.11 note</td></tr>
+<tr><td><b class="t y">2027</b></td><td>Overflow invert ≥20 mm below the internal floor structural substrate</td><td>C2–9 concrete</td><td>F1D4 note</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>Overflow ≥25 mm below top of sill (Multiplex); "below the waterproofing line" (Swinburne)</td><td>All</td><td>Multiplex 17221; Swinburne/HIA</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>Independent overflow below door level; the door gutter is not the overflow</td><td>Flush doors</td><td>Yattenden order; Stormtech 100TDiS</td></tr>
+</tbody></table></div>
+
+<h3>Door, paperwork and site</h3>
+<div class="scroll"><table class="stack"><thead><tr><th>Status</th><th>Requirement</th><th>Applies</th><th>Source</th></tr></thead><tbody>
+<tr><td><b class="t d">DTS</b></td><td>Framed glazed doors to AS 2047; ≥150 Pa, up to 600 Pa exposed N6/C4; check the labelled rating of the flush sill actually supplied</td><td>All</td><td>F3D4 / F1D14 / H1D8</td></tr>
+<tr><td><b class="t m">Mandatory</b></td><td>Regulated designs (W, enclosure, structure), design declarations before CC, building declaration before OC</td><td>C2, C3, C9c</td><td>DBP Act</td></tr>
+<tr><td><b class="t d">DTS</b></td><td>Membrane inspection or acceptance test on completion (DFT or ≥24 h water test suggested)</td><td>All</td><td>cl 2.16</td></tr>
+<tr><td><b class="t g">Guidance</b></td><td>Hold point before tiling: flood test, dated photos of sub-sill, waterstop and gutter, applicator's AS 4654.2 certificate</td><td>All</td><td>Follows from s 61 gap</td></tr>
+<tr><td><b class="t m">Mandatory</b></td><td>Waterproofing licence over $5,000; licensed drainer for the gutter or outlet connection</td><td>Residential</td><td>Fair Trading</td></tr>
+<tr><td><b class="t c">Consent</b></td><td>Build to the access report's threshold (e.g. 10 mm step + threshold ramp; max 35 mm)</td><td>Adaptable units</td><td>DCP access reports</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band" id="conflicts" style="background:var(--panel)"><div class="wrap">
+<h2>Figures that conflict or are unverified</h2>
+<div class="scroll"><table class="stack"><thead><tr><th>Claim</th><th>What the better sources say</th><th>Verdict</th></tr></thead><tbody>
+<tr><td style="white-space:normal">"150 mm upstand", "50 mm step-down", "25 mm at the door" (contractor sites)</td><td>None appears in AS 4654.2-2012; 150 mm is only the N5/C3 Table A1 value</td><td>Disregard; use Table A1 or cl 2.8.3(b)</td></tr>
+<tr><td style="white-space:normal">NSW Guide Diagram 14.06: "See Table 2.1 of AS 4654"; "5x5 mm" fillet</td><td>QBCC and NSW BC cite Table A1; cl 2.7 note gives 15 × 15 / 40 × 40 mm</td><td>Labelling slip; use Table A1 and AS fillet sizes</td></tr>
+<tr><td style="white-space:normal">1:100 as "must"</td><td>A note in AS 4654.2; NCC 2025 mandates 1:80 in the slab for C2–9 concrete</td><td>Build ≥1:100 now, 1:80 structural from 2027</td></tr>
+<tr><td style="white-space:normal">Step-down 50 / 70 / 100 mm</td><td>50 mm is a C1 exclusion, 70 mm a C2–9 structural minimum, 100 mm a NZ threshold</td><td>Not interchangeable; check class and datum</td></tr>
+<tr><td style="white-space:normal">Overflow 20 mm below internal slab / 25 mm below sill / below waterproofing line</td><td>Different datums; only the NCC figure is DTS (2027, C2–9 concrete)</td><td>Design to the most onerous</td></tr>
+<tr><td style="white-space:normal">Threshold ramp 35 mm (AS 1428.1) vs &lt;56 mm (LHDG Silver)</td><td>Different documents; NSW doesn't adopt the LHDS</td><td>Use 35 mm where consents cite AS 1428.1 / AS 4299</td></tr>
+<tr><td style="white-space:normal">AS 3958 external fall 1:60, 1:80 or 1:100</td><td>AS 3958:2023 text not seen</td><td>Unverified</td></tr>
+<tr><td style="white-space:normal">Stormtech "min 50 mm stepdown within the channel" meets NCC</td><td>Manufacturer claim; also cites H8P1, not adopted in NSW</td><td>Certifier acceptance unverified</td></tr>
+<tr><td style="white-space:normal">NSW transition "N/A" vs "12-month transition"</td><td>ABCB vs NSW release</td><td>Confirm the edition per application</td></tr>
+<tr><td style="white-space:normal">Waterproofing licence "at any value" / mandatory by 2028</td><td>Fair Trading: licence above $5,000</td><td>Follow Fair Trading</td></tr>
+<tr><td style="white-space:normal">AWS 703 "600 Pa" vs "600–1200 Pa"</td><td>Depends on threshold and seal</td><td>Use the labelled rating</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band" id="diagrams"><div class="wrap">
+<h2>Official diagrams to print for the site office</h2>
+<p>These are copyright (most are Standards Australia figures reproduced under licence), so they are linked here rather than copied onto this page. Download each from its source.</p>
+<ul class="dl">
+<li><b><a href="https://www.conpro.com.au/wp-content/uploads/2017/02/QBCC-Technical-Feature-Waterproofing-requirements-doorways-to-balconies-130217.pdf">QBCC Technical Feature, Feb 2017</a></b><span>AS 4654.2 Fig 2.9 level threshold with grated gutter (p.3), Fig 2.8 Options 1–2 step-down sub-sills (p.1), Table A1 heights (p.2), photo of a non-compliant door membrane. Standards Australia licence 1702-c008.</span></li>
+<li><b><a href="https://www.nsw.gov.au/sites/default/files/noindex/2025-07/nsw-guide-to-standards-and-tolerances-2017.pdf">NSW Guide to Standards and Tolerances 2017</a></b><span>Diagram 14.06B level threshold with grated gutter (p.59) and 14.06 step-down doorway (p.58). Clause 14.6 defect benchmark.</span></li>
+<li><b><a href="https://hia.com.au/-/media/files/our-industry/advocacy/projects/water-leakage-of-concrete-balconies-in-apartments---an-investigation/swinburne-university-investigation-of-water-leakage-in-residential-apartment-concrete-balconies.pdf">Swinburne / HIA balcony leakage investigation, Aug 2024</a></b><span>Figs 9–10 set-down slab with falls, pavers on pods or screed and tile (p.37). Figs 11–16 no-set-down details judged non-compliant (pp.38–42): what not to build.</span></li>
+<li><b><a href="https://efsg.det.nsw.edu.au/mpx_construction_handbook_waterproofing.pdf">Multiplex Construction Handbook – Waterproofing (NSW EFSG)</a></b><span>17223 balcony sill, double set-down vs hob, ≥10 mm gaps (p.90); 17221 overflow ≥25 mm below sill (p.88). 154 pages, about 40 MB.</span></li>
+<li><b><a href="https://www.nsw.gov.au/sites/default/files/2025-06/building-defects-library.pdf.pdf">Building Commission NSW Building Defects Library v1.1</a></b><span>Item 2.5, sliding door termination, quoting cl 2.8.3 and the façade engineer comment (p.13).</span></li>
+<li><b><a href="https://stormtech.com.au/documents/TDi-threshold-waterproofing_3.pdf">Stormtech TDi threshold waterproofing</a></b><span>Flush drain with separate sub-sill; membrane completed first to the drain flange; caulking, backing rod, 2 mm nylon separation.</span></li>
+<li><b><a href="https://stormtech.com.au/documents/100TDiS-threshold.pdf">Stormtech 100TDiS</a> and <a href="https://stormtech.com.au/documents/Premium-Threshold-Sill-Only.pdf">sill-only order form</a></b><span>Drain tray as sub-sill, separate overflow outlet; sizing rules for grates, track depth and channel length.</span></li>
+<li><b><a href="https://cdn.shopify.com/s/files/1/0246/5497/0958/files/J003221_Aquabocci_-_R47_Low_Profile_PDF_Spec_Sheet_ART1.pdf">Aquabocci R-47 Low Profile</a></b><span>Low-profile drain with EPDM sleeve under a three-track door (p.3).</span></li>
+<li><b><a href="https://www.specifyaws.com.au/cdn/lhjUiWS3K4Cy/703-productsheet.pdf">AWS SlideMASTER 703 recessed sill</a> · <a href="https://alspec.com.au/_assets/products/brochures/ProGlide-UltraFlat-Brochure.pdf">Alspec ProGlide UltraFlat</a></b><span>Flush door sills with published AS 2047 ratings (600 Pa, 630 Pa).</span></li>
+<li><b><a href="https://ardexaustralia.com/cad-category/liquid-membrane-external/">Ardex CAD library</a></b><span>D68–D70, D46–D48, D210–D211 door terminations (all step-down, useful for sub-sill and waterstop sequence); D55 channel drain; D66/D67 pedestals.</span></li>
+<li><b><a href="https://d39d3mj7qio96p.cloudfront.net/media/documents/BU583-Waterproof-decks.pdf">BRANZ Bulletin 583</a> · <a href="https://www.vikingroofspec.co.nz/media/j43n2enf/viking-buzon-details-full-set.pdf">Viking Buzon BZ03</a></b><span>New Zealand: level thresholds on timber decks and pedestal pavers with a 100 mm structural step. Method only, not AS 4654 evidence.</span></li>
+<li><b><a href="https://eu.schluter.com/statics/www_schlueter_gb_2x/downloads/cumulus/551852_Heft_A_Balkone_GB.pdf">Schlüter balcony guide (Heft A)</a></b><span>German DIN method: a door channel cuts the threshold from 15 cm to 5 cm. Not AS 4654 evidence.</span></li>
+</ul>
+</div></section>
+
+<section class="band end"><div class="wrap two">
+<div>
+<h2>The threshold is decided when the slab is set out</h2>
+<p>Every compliant route depends on depth cast into the concrete or framing before the membrane applicator arrives: a gutter recess, a set-down under a raised finish, or a rebate for a proprietary drain. Once the slab is poured flat, no membrane product can make it compliant. For a Class 2 job that may run past 1 May 2027, design to the 2025 geometry now (70 mm structural set-down, 1:80 slab fall, integral hob, overflow 20 mm below the internal slab) with a door-line gutter or drain on top. That satisfies both editions. Houses keep the 2022 rules, but H2D8 means a level concrete balcony over a habitable room gets more scrutiny than a stepped one.</p>
+</div>
+<div>
+<h3 style="margin-top:6px">Paperwork that protects the builder</h3>
+<ul class="tight">
+<li>Façade engineer's declared termination detail for the flush door.</li>
+<li>Drain and membrane makers' written acceptance of their interface.</li>
+<li>The door's labelled AS 2047 rating for the actual sill.</li>
+<li>A dated flood test and photos before a tile goes down.</li>
+</ul>
+<p class="src">Not verified: full AS 4654.2 and AS 2047 text (paywalled; licensed reproductions used); gutter or set-down dimensions in any authority diagram; which AS/NZS 3500.3 edition NSW calls up; Victorian SD-02 diagrams; what the 2026 draft revisions change at doors.</p>
+</div>
+</div></section>
+
+</body>
+</html>
