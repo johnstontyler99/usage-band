@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balcony threshold plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a job-specific construction plan for a builder, exact and calm
+   IDEA a detail sheet from a drawing set: dimensioned section at the door, plan of the deck, depth budget, sequence with hold points
+   PICTURE a large dimensioned section through the door threshold, drawn to scale from mm values, membrane traced in blue
+   COLOUR white paper, black ink, concrete-grey timber planes, membrane blue, brick red for hold points and sealant
+   TYPE Hanken Grotesk 600 + Hanken Grotesk
+   LAYOUT finding and the job's facts across the top, section drawing full width, then plan + depth budget side by side, then sequence */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#161615);--ink:light-dark(#141414,#ecebe7);--mute:light-dark(#5a5955,#a9a7a1);--line:light-dark(#d9d8d3,#34342f);--panel:light-dark(#f3f2ef,#1f1f1d);--timber:light-dark(#e9dcc4,#4a3f2e);--grain:light-dark(#c9b58f,#6d5c40);--sheet:light-dark(#d4d4cf,#45453f);--bed:light-dark(#eeeae0,#2c2b27);--tile:light-dark(#4a4a46,#9a9891);--mem:light-dark(#1450c8,#78a2ff);--water:light-dark(#9cc0ff,#2d4f8f);--red:light-dark(#c8371e,#ff8064);--glass:light-dark(#e6eef0,#26302f);--alu:light-dark(#b9bcc0,#6c7076)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration-color:var(--mem);text-underline-offset:2px}
+.band{padding-block:clamp(24px,4vw,52px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-size:clamp(32px,4.4vw,48px);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:0 0 14px;text-wrap:balance;max-width:24ch}
+h2{font-size:clamp(22px,2.5vw,28px);line-height:1.15;font-weight:600;margin:0 0 12px;text-wrap:balance;max-width:36ch}
+h3{font-size:18px;margin:22px 0 8px;font-weight:600}
+p{margin:0 0 12px;max-width:72ch}
+.lede{font-size:17px;max-width:80ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));border-top:2px solid var(--ink);margin-top:18px}
+.facts div{padding:10px 14px 10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts b{display:block;font-size:20px;line-height:1.2;font-weight:600}
+.facts span{color:var(--mute)}
+.draw{overflow-x:auto;border:1px solid var(--line);background:var(--bg)}
+.draw svg{display:block;width:100%;height:auto;color:var(--ink)}
+#sec{min-width:900px}#pln{min-width:560px}
+svg text{font:13px "Hanken Grotesk",system-ui,sans-serif;fill:currentColor;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg .sm{font-size:12px;fill:var(--mute)}
+svg .hd{font-size:14px;font-weight:600}
+svg .bl{fill:var(--mem)}
+figure{margin:0}
+figcaption{font-size:15px;color:var(--mute);margin-top:10px;max-width:92ch}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 44px;align-items:start}
+@media(max-width:900px){.two{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);padding:18px 20px;border-radius:4px}
+.panel p:last-child,.panel ul:last-child{margin-bottom:0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-size:14px;border-bottom:2px solid var(--ink)}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:600;border-bottom:2px solid var(--ink)}
+.scroll{overflow-x:auto}
+ol.steps{list-style:none;margin:8px 0 0;padding:0;counter-reset:s}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:2.6em minmax(0,1fr);gap:0 12px;padding:14px 0;border-top:1px solid var(--line)}
+ol.steps>li::before{content:counter(s);font-size:22px;font-weight:600;line-height:1.2}
+ol.steps b.h{display:block;font-size:17px;margin-bottom:2px}
+ol.steps p{margin:0 0 6px}
+.hold{display:inline-block;font-size:12px;font-weight:600;padding:3px 7px;border-radius:3px;background:var(--red);color:#fff;white-space:nowrap;vertical-align:2px;margin-left:6px}
+ul.tight{margin:6px 0 10px;padding-left:20px;max-width:75ch}
+ul.tight li{margin:4px 0}
+.src{font-size:14px;color:var(--mute)}
+.warn{border-left:4px solid var(--red);padding:12px 16px;background:var(--panel)}
+@media(max-width:600px){table{font-size:14px}th,td{padding:6px 4px}.stack thead{display:none}.stack tr{display:grid;padding-block:8px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7.5em}.stack td::before{content:attr(data-l);float:inline-start;width:7em;margin-inline-start:-7.5em;color:var(--mute);font-size:13px}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band" style="border-bottom:1px solid var(--line)"><div class="wrap">
+<h1>Keep the 75 mm drop only as a drained gutter at the door, and pack the rest of the deck up to tile depth</h1>
+<p class="lede">With the door sill sitting on the inside floor and the tiles level with it, the membrane can't turn up the 40–50 mm above the tile that AS 4654.2 Table A1 suggests for N1/N2. So the door has to use <b>cl 2.8.3(b)</b>: membrane fixed under the sill and run into the stormwater system through a <b>grated channel in a recess at the door</b> (Fig 2.9). Your structure is already 75 mm down, so leave a 160 mm strip at that level for the channel. Raise the rest of the deck on tapered firring and new sheet so tiles bond straight onto the membrane, falling away from the door. That keeps the deck light over the room below and puts the fall in the substrate.</p>
+<div class="facts">
+<div><b>Class 1 house</b><span>NCC H2D8 → AS 4654.2 in full</span></div>
+<div><b>Framed floor</b><span>Joists + sheet substrate</span></div>
+<div><b>−75 mm</b><span>Balcony substrate below inside FFL</span></div>
+<div><b>Habitable room below</b><span>No exclusion; highest stakes</span></div>
+<div><b>Covered, N1/N2</b><span>Door ≥150 Pa (AS 2047)</span></div>
+<div><b>Sill on the floor</b><span>Not recessed; small step over the sill only</span></div>
+</div>
+<p class="src" style="margin-top:10px">Dimensions marked "assumed" need measuring on site. Plan for discussion with your certifier, waterproofer, plumber and door supplier. It is not a certified design.</p>
+</div></header>
+
+<section class="band"><div class="wrap">
+<h2>Section at the door, drawn to scale</h2>
+<figure>
+<div class="draw"><svg id="sec" viewBox="0 0 1440 780" role="img" aria-label="Section through the balcony door: tiles on a raised sheet deck at 20 mm below floor level falling away from a grated channel set in a 75 mm recess at the door; membrane runs from the deck down into the recess, up the step face, under the sub-sill and up the waterstop; the channel outlet drops into the joist space and runs to the outer edge."></svg></div>
+<figcaption>Scale 1.6 px per mm. Assumed: internal floor finish 20 mm, 19 mm sheets, sill 120 mm deep standing about 25 mm above the floor, channel about 150 mm wide × 55 mm deep overall. Get the channel's real depth and width from the supplier before setting out the recess.</figcaption>
+</figure>
+</div></section>
+
+<section class="band" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Plan of the deck</h2>
+<figure>
+<div class="draw" style="background:var(--bg)"><svg id="pln" viewBox="0 0 700 520" role="img" aria-label="Plan of the balcony: house wall along the top with the door; grated channel along the full door width plus 100 mm each side; deck falls away from the house to an outlet and overflow at the outer edge; channel outlet pipe runs in a joist bay to the edge."></svg></div>
+<figcaption>Assumed 4.0 m × 2.4 m deck and 2.4 m door opening. Swap in your measurements; the logic doesn't change.</figcaption>
+</figure>
+</div>
+<div>
+<h2>Depth budget</h2>
+<div class="scroll"><table>
+<thead><tr><th>Deck at the channel edge</th><th class="n">mm</th></tr></thead>
+<tbody>
+<tr><td>Tile (assumed)</td><td class="n">10</td></tr>
+<tr><td>Adhesive</td><td class="n">8</td></tr>
+<tr><td>Membrane</td><td class="n">2</td></tr>
+<tr><td>New compressed fibre-cement sheet</td><td class="n">19</td></tr>
+<tr><td>Tapered firring (thick end)</td><td class="n">36</td></tr>
+<tr class="tot"><td>Down to existing substrate</td><td class="n">75</td></tr>
+</tbody></table></div>
+<div class="scroll" style="margin-top:14px"><table>
+<thead><tr><th>Channel strip</th><th class="n">mm</th></tr></thead>
+<tbody>
+<tr><td>Channel overall, grate top = inside FFL</td><td class="n">≤55</td></tr>
+<tr><td>Bed / packers under channel</td><td class="n">≈18</td></tr>
+<tr><td>Membrane</td><td class="n">2</td></tr>
+<tr class="tot"><td>Recess depth (existing substrate)</td><td class="n">75</td></tr>
+</tbody></table></div>
+<p class="src" style="margin-top:10px">At the outer edge (2.4 m): 1:100 drops the finished deck 24 mm, so firring thins to about 12 mm. At 1:80 it drops 30 mm (firring about 6 mm). If the existing sheet already falls, the firring takes up the difference. A channel deeper than about 55 mm won't fit without lowering the recess floor.</p>
+</div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div>
+<h2>What applies to this job</h2>
+<div class="scroll"><table class="stack">
+<thead><tr><th>Rule</th><th>What it means here</th></tr></thead>
+<tbody>
+<tr><td>NCC H2D8 (2022 and 2025 identical)</td><td>Balcony over a habitable room → membrane to AS 4654.1 and AS 4654.2. Not concrete, and tiles aren't spaced decking, so no exclusion applies.</td></tr>
+<tr><td>AS 4654.2 cl 2.8.3(a)</td><td>Sub-sill flashing must be part of the membrane system.</td></tr>
+<tr><td>AS 4654.2 cl 2.8.3(b)</td><td>Flush tiles → membrane fixed under the sill and terminated into stormwater: the channel.</td></tr>
+<tr><td>AS 4654.2 Table A1 (informative)</td><td>N1 40 mm, N2 50 mm above tile: applies at the house wall either side of the door and any side walls, not at the door itself.</td></tr>
+<tr><td>AS 4654.2 cl 2.5.2</td><td>No ponding; fall in the substrate (here the firring). Note says ≥1:100; use 1:80 if the depth allows.</td></tr>
+<tr><td>AS 4654.2 cl 2.10, 2.11</td><td>Membrane into every outlet (flange or clamping ring) and into the overflow.</td></tr>
+<tr><td>AS 4654.2 cl 2.7, 2.8.4, 2.12, 2.16</td><td>Fillets or bond breakers at every corner, fixings through the membrane sealed, completion test.</td></tr>
+<tr><td>AS 2047 via H1D8</td><td>Covered N1/N2: 150 Pa minimum water rating on the door's label.</td></tr>
+<tr><td>AS/NZS 3500.3</td><td>Plumber sizes channel outlet, main outlet (20-yr ARI) and overflow (100-yr ARI).</td></tr>
+<tr><td>NSW law</td><td>Licensed waterproofer if over $5,000; licensed drainer for the stormwater work; certifier inspects stormwater connections before they're covered. No mandatory membrane inspection, so you set the hold points.</td></tr>
+</tbody></table></div>
+</div>
+<div>
+<h2>Why this layout</h2>
+<ul class="tight">
+<li><b>Light:</b> about 75 mm of screed over a framed floor would weigh roughly 150 kg/m² and hold water. Firring and sheet weigh a fraction of that, and tiles bond straight to the membrane.</li>
+<li><b>Falls in the substrate:</b> the tapered firring gives the fall the standard asks for, with no wet bed under the tiles.</li>
+<li><b>The door detail is the standard's own:</b> Fig 2.9 is a gutter formed in the substrate in front of the opening. Your 75 mm drop becomes that gutter.</li>
+<li><b>No change to the inside floor:</b> the sill sits on the subfloor as normal, on a sub-sill tray over the membrane.</li>
+</ul>
+<div class="warn"><p><b>The risk over a bedroom or living room</b> is the channel outlet. Its pipe runs in the balcony joist space, which is the ceiling of the room below. Use solvent-welded pipe with no mechanical joints in that space, graded to the outer edge. Water-test it, and have the certifier inspect it before the ceiling is closed. If the side of the balcony allows it, an end-outlet channel discharging sideways avoids the ceiling void altogether.</p></div>
+<h3>Fallback if no channel fits</h3>
+<p>Pavers on pedestals with open joints, the membrane staying at −75 mm everywhere and turned up the step face and under the sill. This is how the New Zealand details (BRANZ BU583, Viking Buzon BZ03) do it. It isn't an AS 4654.2 figure, so treat it as a Performance Solution and get the certifier's agreement first.</p>
+</div>
+</div></section>
+
+<section class="band" style="background:var(--panel)"><div class="wrap">
+<h2>Sequence, with hold points</h2>
+<ol class="steps">
+<li><div><b class="h">Agree the design before anything is cut</b><p>Send your certifier this section: the cl 2.8.3(b) route with a Fig 2.9 channel. Choose a membrane system the maker rates for fibre-cement over timber framing (a high-movement Class III membrane). Choose the channel, then get the membrane maker's written OK for joining their membrane to that channel's flange. Ask the door supplier for the sill profile and a matching sub-sill tray.</p></div></li>
+<li><div><b class="h">Measure</b><p>Measure inside FFL, existing substrate levels at the door and the outer edge (string line), the opening width, internal finish thickness, and joist size, spacing and direction. Find where the downpipe is. If adding firring and sheet changes the load, get the engineer to check the joists.</p></div></li>
+<li><div><b class="h">Framing</b><p>Fix tapered firring for 1:100 minimum (1:80 better) away from the house. Stop it about 160 mm short of the step face (or the channel width plus 10 mm) to leave the recess. Add noggings so every sheet edge at the recess, and every joint, is supported.</p></div></li>
+<li><div><b class="h">Plumbing rough-in</b><span class="hold">Certifier inspection</span><p>Fit puddle flanges for the channel outlet and the main deck outlet, an overflow through the edge upstand set below the door line, and solvent-welded pipe in the joist bay to the downpipe. Water-test the pipes. The stormwater connection is a critical stage inspection, so book it before the ceiling below is closed.</p></div></li>
+<li><div><b class="h">Sheet</b><p>Lay compressed fibre-cement sheet rated for tiled external decks, fixed to the maker's pattern, with joints over supports. Leave the recess floor at the existing substrate.</p></div></li>
+<li><div><b class="h">Prepare</b><p>Prime. Put bond breakers or fillets at every internal corner: both recess edges, the step face, and the wall junctions. Reinforce sheet joints and outlet surrounds as the system requires.</p></div></li>
+<li><div><b class="h">Membrane</b><p>Run one continuous membrane: across the deck, down into the recess, along its floor, up the step face, across the subfloor top under the sill, and up the waterstop line. At the house wall and any side walls, take it at least 50 mm above the finished tile (N2; 40 mm for N1), behind the cladding and flashings. Turn it into both outlets and the overflow. Check the film thickness.</p></div></li>
+<li><div><b class="h">Sub-sill and waterstop</b><p>Bed the aluminium sub-sill tray in sealant on the membrane over the subfloor. It needs a rear upstand (the waterstop), end dams returned at the jambs, and a front lip over the channel. Seal every fixing before drilling.</p></div></li>
+<li><div><b class="h">Flood test</b><span class="hold">Hold point</span><p>Plug the outlets, dam the door, and keep water below the subfloor top for at least 24 hours. Watch the ceiling below. Take dated photos of the sub-sill, waterstop, recess corners, outlets and overflow, and get the applicator's AS 4654.2 certificate.</p></div></li>
+<li><div><b class="h">Channel</b><p>Set the channel on bed or packers in the recess, with its outlet into the puddle flange and the membrane joined to its flange as the maker specifies. Grate top goes at inside FFL, full opening width plus about 100 mm each side. Keep at least 2 mm nylon separation between stainless and aluminium.</p></div></li>
+<li><div><b class="h">Tile</b><p>Adhere tiles direct to the membrane, falling away from the grate, with a perimeter movement joint and movement joints at no more than 4.5 m. Keep outlets clear and the grate removable. Check for ponding with a hose before grouting is finished.</p></div></li>
+<li><div><b class="h">Door</b><span class="hold">Check label</span><p>Set the sill on packers in the sub-sill and seal it. Confirm the door's AS 2047 label shows at least 150 Pa for the sill you're actually fitting. Seal the inside finish to the sill. At handover, give the owner the photos, flood-test record, membrane certificate, and a note to keep the grate clear.</p></div></li>
+</ol>
+</div></section>
+
+<section class="band"><div class="wrap two">
+<div>
+<h2>Measure or confirm these on site</h2>
+<ul class="tight">
+<li>Internal floor finish thickness, which sets the step face height (assumed 20 mm).</li>
+<li>Sill profile: depth, height above the floor (assumed about 25 mm), and the sub-sill tray it accepts.</li>
+<li>Channel's real overall depth and width, including bed. It must fit in 75 mm.</li>
+<li>Whether the existing balcony sheet is flat or already falls, and what it is.</li>
+<li>Joist direction (firring assumes joists run out from the house), size and spacing.</li>
+<li>Edge condition: balustrade upstand with outlet and overflow, or open edge to a gutter.</li>
+<li>Downpipe location for the pipe run.</li>
+<li>Any DA condition requiring an accessible threshold (none applies to a NSW house by default).</li>
+</ul>
+</div>
+<div>
+<h2>Buy list to price</h2>
+<ul class="tight">
+<li>Tapered firring, noggings, and compressed fibre-cement sheet rated for tiled external decks.</li>
+<li>Membrane system for fibre-cement over timber, with primer, bond breaker, reinforcing and joint tape.</li>
+<li>Stainless threshold channel ≤55 mm overall, 65–100 mm grate, with outlet and flange (e.g. a Stormtech threshold series or similar).</li>
+<li>Puddle flanges for two outlets, an overflow spitter, and DN pipe sized by the plumber.</li>
+<li>Aluminium sub-sill tray with end dams and rear upstand, packers, sealant, backing rod, and nylon separation strip.</li>
+<li>Door with an AS 2047 rating of at least 150 Pa.</li>
+<li>External tiles and adhesive compatible with the membrane, plus a movement-joint sealant.</li>
+</ul>
+<p class="src">Sources: AS 4654.2-2012 cl 2.5.2, 2.7, 2.8, 2.10–2.12, 2.16, Fig 2.9, Table A1 (via QBCC 2017 and the Building Commission NSW Defects Library); NCC 2022/2025 Vol Two H2D8, H1D8; AS 2047 via AGWA; Stormtech TDi/TDiS data; BRANZ BU583; Viking Buzon BZ03. See the research page for links.</p>
+</div>
+</div></section>
+
+<script>{
+const S=1.6,X0=80,Y0=230;const X=m=>X0+m*S,Y=d=>Y0+d*S;
+const r=(x1,d1,x2,d2,f,ex='')=>`<rect x="${X(x1)}" y="${Y(d1)}" width="${(x2-x1)*S}" height="${(d2-d1)*S}" fill="${f}" ${ex}/>`;
+const t=(x,y,s,c='')=>`<text x="${x}" y="${y}" ${c}>${s}</text>`;
+const L=(x1,y1,x2,y2,c='currentColor',w=1)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"/>`;
+let g='';
+g+=`<defs><pattern id="tb" width="14" height="6" patternUnits="userSpaceOnUse"><rect width="14" height="6" fill="var(--timber)"/><path d="M0,3 C4,1 9,5 14,3" fill="none" stroke="var(--grain)" stroke-width=".8"/></pattern>
+<pattern id="bd" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="var(--bed)"/><circle cx="2" cy="3" r=".9" fill="var(--grain)"/><circle cx="6" cy="6.5" r=".9" fill="var(--grain)"/></pattern>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+<marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--mem)"/></marker></defs>`;
+g+=t(20,26,'Section through the balcony door (exterior left, interior right)','class="hd"');
+g+=L(20,Y(0),1420,Y(0),'var(--mute)',1).replace('/>',' stroke-dasharray="4 4"/>')+t(1290,Y(0)-8,'Inside FFL ±0','class="sm"');
+/* joists and ceiling */
+g+=`<rect x="${X(0)}" y="${Y(94)}" width="${(460)*S}" height="${(280-94)*S}" fill="none" stroke="var(--grain)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+g+=`<rect x="${X(460)}" y="${Y(39)}" width="${(820-460)*S}" height="${(280-39)*S}" fill="none" stroke="var(--grain)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+g+=r(0,290,820,303,'var(--sheet)','stroke="currentColor" stroke-width="1"');
+g+=t(X(10),Y(286)-4,'Balcony joist space = ceiling void of the habitable room below','class="sm"');
+g+=t(X(10),Y(318),'Ceiling lining, room below','class="sm"');
+/* existing sheet, firring, new sheet */
+g+=r(0,75,460,94,'var(--sheet)','stroke="currentColor" stroke-width="1"');
+g+=`<polygon points="${X(0)},${Y(39)} ${X(300)},${Y(39)} ${X(300)},${Y(75)} ${X(0)},${Y(75)}" fill="url(#tb)" stroke="currentColor" stroke-width="1"/>`;
+g+=r(0,20,300,39,'var(--sheet)','stroke="currentColor" stroke-width="1"');
+/* interior structure */
+g+=r(460,20,820,39,'var(--sheet)','stroke="currentColor" stroke-width="1"');
+g+=r(580,0,820,20,'var(--tile)');
+g+=t(X(700),Y(0)-30,'Inside floor finish (assumed 20)','class="sm" text-anchor="middle"');
+/* deck tiles + adhesive */
+g+=r(0,10,300,18,'url(#bd)')+r(0,0,300,10,'var(--tile)');
+for(let m=60;m<300;m+=60)g+=L(X(m),Y(0),X(m),Y(10),'var(--bg)',2);
+/* recess bed + channel */
+g+=r(306,55,454,73,'url(#bd)');
+g+=`<path d="M${X(306)},${Y(0)} L${X(306)},${Y(55)} L${X(454)},${Y(55)} L${X(454)},${Y(0)}" fill="var(--bg)" stroke="currentColor" stroke-width="2"/>`;
+g+=r(310,45,450,53,'var(--water)');
+g+=r(304,0,456,4,'var(--bg)','stroke="currentColor" stroke-width="1.5"');
+for(let m=316;m<450;m+=12)g+=L(X(m),Y(0),X(m),Y(4),'currentColor',1.2);
+/* outlet pipe */
+const px1=X(368),px2=X(392);
+g+=`<path d="M${px1},${Y(55)} L${px1},${Y(150)} Q${px1},${Y(172)} ${px1-30},${Y(172)} L${X(0)},${Y(184)} L${X(0)},${Y(160)} L${px2-50},${Y(148)} Q${px2},${Y(148)} ${px2},${Y(126)} L${px2},${Y(55)} Z" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/>`;
+g+=r(352,73,408,76,'currentColor');
+g+=`<path d="M${X(180)},${Y(160)} L${X(60)},${Y(165)}" stroke="var(--mem)" stroke-width="1.6" marker-end="url(#aw)"/>`;
+/* membrane */
+const mp=[[0,19],[300,19],[300,74],[459,74],[459,19],[578,19],[578,1]].map(([m,d])=>`${X(m)},${Y(d)}`).join(' ');
+g+=`<polyline points="${mp}" fill="none" stroke="var(--mem)" stroke-width="4" stroke-linejoin="round"/>`;
+/* sub-sill tray, packers, sill, door */
+g+=`<polyline points="${X(452)},${Y(26)} ${X(458)},${Y(17)} ${X(575)},${Y(17)} ${X(575)},${Y(2)}" fill="none" stroke="var(--alu)" stroke-width="3.5"/>`;
+for(const m of [470,515,555])g+=r(m,11,m+9,16.5,'currentColor');
+g+=r(462,-25,574,11,'var(--panel)','stroke="currentColor" stroke-width="1.5"');
+g+=r(490,-31,494,-25,'currentColor')+r(540,-31,544,-25,'currentColor');
+g+=r(470,-120,516,-31,'var(--glass)','stroke="currentColor" stroke-width="2"')+r(520,-120,566,-31,'var(--glass)','stroke="currentColor" stroke-width="2"');
+g+=`<rect x="${X(579)}" y="${Y(-4)}" width="7" height="7" rx="2" fill="var(--red)"/>`;
+/* fall arrow */
+g+=`<path d="M${X(280)},${Y(-8)} L${X(20)},${Y(-6)}" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>`;
+/* dimensions */
+const dim=(x,d1,d2,lab,side=-1)=>`<line x1="${x}" y1="${Y(d1)}" x2="${x}" y2="${Y(d2)}" stroke="currentColor" stroke-width="1" marker-start="url(#ar)" marker-end="url(#ar)"/>`+t(x+side*8,(Y(d1)+Y(d2))/2+4,lab,`text-anchor="${side<0?'end':'start'}"`);
+g+=dim(X(0)-14,0,20,'20');g+=dim(X(0)-14,20,75,'55');
+g+=dim(X(300)+14,0,75,'75',1);
+g+=dim(X(454)-12,0,55,'≈55',-1);
+g+=`<line x1="${X(306)}" y1="${Y(-14)}" x2="${X(454)}" y2="${Y(-14)}" stroke="currentColor" stroke-width="1" marker-start="url(#ar)" marker-end="url(#ar)"/>`+t(X(380),Y(-14)-6,'≈150 channel','text-anchor="middle"');
+g+=t(X(0),Y(-22),'Tiles adhered to membrane, falls ≥1:100 away from the door');
+/* labels top */
+g+=L(X(272),Y(-84),X(380),Y(-2));g+=t(X(40),Y(-80),'Grate top at inside FFL, full door width + 100 each side');
+g+=L(X(150),Y(98),X(150),Y(45));g+=t(X(20),Y(112),'New 19 FC sheet on tapered firring (36 → 12 thick)');
+g+=L(X(608),Y(-104),X(560),Y(-20));g+=t(X(612),Y(-100),'Sill sits on the floor, not recessed (≈25 up, assumed)');
+g+=L(X(608),Y(-78),X(576),Y(8));g+=t(X(612),Y(-74),'Sub-sill tray: rear upstand = waterstop, end dams');
+g+=L(X(608),Y(-52),X(582),Y(-2));g+=t(X(612),Y(-48),'Packers; fixings sealed; sealant to inside finish');
+/* labels in cavities */
+g+=L(X(600),Y(64),X(462),Y(48),'var(--mem)',1.2);g+=t(X(604),Y(68),'Membrane: deck → recess → step → under sill → waterstop','class="bl"');
+g+=L(X(600),Y(96),X(458),Y(70),'currentColor',1);g+=t(X(604),Y(100),'Step face (assumed 55): bond breaker/fillet at both corners');
+g+=L(X(600),Y(128),X(408),Y(75),'currentColor',1);g+=t(X(604),Y(132),'Puddle flange; membrane clamped or bonded per maker');
+g+=t(X(604),Y(164),'Channel outlet: solvent-welded pipe in the joist bay, graded to the');
+g+=t(X(604),Y(180),'outer edge and downpipe. No mechanical joints over the room.');
+g+=t(X(604),Y(196),'Water-test and certifier inspection before the ceiling closes.');
+g+=t(X(40),Y(218),'Existing substrate at −75 stays as the recess floor','class="sm"');
+document.getElementById('sec').innerHTML=g;
+
+/* plan */
+const P=0.14,PX=60,PY=70;const px=m=>PX+m*P,py=m=>PY+m*P;
+let h=`<defs><marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker><marker id="pb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--mem)"/></marker></defs>`;
+h+=`<rect x="${px(0)-14}" y="${py(0)-22}" width="${4000*P+28}" height="22" fill="var(--sheet)" stroke="currentColor"/>`;
+h+=t(px(0),py(0)-30,'House wall (membrane up ≥50 above tile, behind cladding)','class="sm"');
+h+=`<rect x="${px(800)}" y="${py(0)-22}" width="${2400*P}" height="22" fill="var(--glass)" stroke="currentColor" stroke-width="2"/>`+t(px(2000),py(0)-7,'Door 2400 (assumed)','text-anchor="middle" class="sm"');
+h+=`<rect x="${px(0)}" y="${py(0)}" width="${4000*P}" height="${2400*P}" fill="var(--bg)" stroke="currentColor" stroke-width="2"/>`;
+h+=`<rect x="${px(700)}" y="${py(0)}" width="${2600*P}" height="${160*P+4}" fill="var(--panel)" stroke="currentColor" stroke-width="1.5"/>`;
+for(let m=760;m<3300;m+=70)h+=L(px(m),py(0)+3,px(m),py(160)+1,'currentColor',.8);
+h+=t(px(2000),py(160)+20,'Grated channel in the −75 recess, ≥ opening + 100 each side','text-anchor="middle"');
+for(const m of [900,2000,3100])h+=`<path d="M${px(m)},${py(450)} L${px(m)},${py(1900)}" stroke="currentColor" stroke-width="1.4" marker-end="url(#pa)"/>`;
+h+=t(px(2000)+8,py(1150),'falls ≥1:100 (1:80 better)');
+h+=t(px(2000)+8,py(1150)+16,'tiles on membrane on firring','class="sm"');
+h+=`<circle cx="${px(600)}" cy="${py(2250)}" r="9" fill="var(--bg)" stroke="currentColor" stroke-width="2"/><circle cx="${px(600)}" cy="${py(2250)}" r="3" fill="currentColor"/>`;
+h+=t(px(600)+14,py(2250)+4,'Main outlet');
+h+=`<rect x="${px(1500)}" y="${py(2400)-4}" width="26" height="14" fill="var(--red)"/>`+t(px(1500)+34,py(2400)+22,'Overflow through edge, below door line');
+h+=`<path d="M${px(2000)},${py(120)} L${px(2000)},${py(300)} L${px(700)},${py(2320)} L${px(650)},${py(2480)}" fill="none" stroke="var(--mem)" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#pb)"/>`;
+h+=t(px(1050),py(1500),'channel outlet pipe in joist bay','class="bl"');
+h+=t(px(0),py(2400)+42,'Outer edge: balustrade upstand, or open edge to a gutter','class="sm"');
+h+=`<line x1="${px(0)}" y1="${py(2400)+56}" x2="${px(4000)}" y2="${py(2400)+56}" stroke="currentColor" marker-start="url(#pa)" marker-end="url(#pa)"/>`+t(px(2000),py(2400)+74,'4000 (assumed)','text-anchor="middle" class="sm"');
+document.getElementById('pln').innerHTML=h;
+}</script>
+</body>
+</html>
